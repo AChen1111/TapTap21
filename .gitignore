@@ -20,6 +20,12 @@
 /[Uu]ser[Ss]ettings/
 *.log
 
+# 允许提交 Unity 版本信息（编辑器版本，供仓库对齐）
+!/ProjectSettings/ProjectVersion.txt
+!/ProjectSettings/ProjectVersion.txt.meta
+!/Packages/manifest.json
+!/Packages/packages-lock.json
+
 # By default unity supports Blender asset imports, *.blend1 blender files do not need to be committed to version control.
 *.blend1
 *.blend1.meta
