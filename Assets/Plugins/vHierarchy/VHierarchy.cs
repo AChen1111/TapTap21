@@ -18,7 +18,7 @@ using static VHierarchy.Libs.VGUI;
 using static VHierarchy.VHierarchyData;
 using static VHierarchy.VHierarchyCache;
 
-#if UNITY_6000_5_OR_NEWER
+#if UNITY_6000_3_OR_NEWER
 using TreeViewItem = UnityEditor.IMGUI.Controls.TreeViewItem<UnityEngine.EntityId>;
 using TreeViewState = UnityEditor.IMGUI.Controls.TreeViewState<UnityEngine.EntityId>;
 #elif UNITY_6000_2_OR_NEWER
@@ -381,6 +381,9 @@ namespace VHierarchy
 
 #if UNITY_6000_5_OR_NEWER
                 Object getObject(int id) => EditorUtility.EntityIdToObject(id.ToEntityId());
+                int getSceneId(Scene scene) => scene.GetHandleId();
+#elif UNITY_6000_3_OR_NEWER
+                Object getObject(int id) => EditorUtility.EntityIdToObject(id);
                 int getSceneId(Scene scene) => scene.GetHandleId();
 #else
                 Object getObject(int id) => EditorUtility.InstanceIDToObject(id);
@@ -1914,7 +1917,7 @@ namespace VHierarchy
 
 
 
-#if UNITY_6000_5_OR_NEWER
+#if UNITY_6000_3_OR_NEWER
         public static EntityId ToIdType(this int id) => id.ToEntityId();
         public static List<int> ToInts(this List<EntityId> ids) => ids.Select(r => r.ToInt()).ToList();
         public static List<int> GetIdList(this object o, string listName) => o.GetMemberValue<List<EntityId>>(listName)?.ToInts();

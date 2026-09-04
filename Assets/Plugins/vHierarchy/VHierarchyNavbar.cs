@@ -136,7 +136,7 @@ namespace VHierarchy
 
                 var menu = new GenericMenu();
 
-#if UNITY_6000_5_OR_NEWER
+#if UNITY_6000_3_OR_NEWER
                 sceneHierarchy.GetType().GetMethod("AddCreateGameObjectItemsToSceneMenu", maxBindingFlags).Invoke(sceneHierarchy, new object[] { menu, SceneManager.GetActiveScene() });
 #else
                 sceneHierarchy.GetType().GetMethod("AddCreateGameObjectItemsToMenu", maxBindingFlags).Invoke(sceneHierarchy, new object[] { menu, null, true, true, false, targetSceneHandle, 3 });

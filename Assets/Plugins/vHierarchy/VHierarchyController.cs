@@ -19,7 +19,7 @@ using static VHierarchy.VHierarchy;
 using static VHierarchy.VHierarchyData;
 using static VHierarchy.VHierarchyCache;
 
-#if UNITY_6000_5_OR_NEWER
+#if UNITY_6000_3_OR_NEWER
 using TreeViewItem = UnityEditor.IMGUI.Controls.TreeViewItem<UnityEngine.EntityId>;
 using TreeViewState = UnityEditor.IMGUI.Controls.TreeViewState<UnityEngine.EntityId>;
 #elif UNITY_6000_2_OR_NEWER

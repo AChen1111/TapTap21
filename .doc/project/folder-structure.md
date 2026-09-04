@@ -51,7 +51,7 @@ TapTap21/
 
 | 路径 | 职责 |
 | --- | --- |
-| `Plugins/` | Asset Store / 第三方插件源码与 DLL。现有：Sirenix（Odin）、SuperScrollView、vHierarchy、VoxelLabs（Ultimate Preview） |
+| `Plugins/` | Asset Store / 第三方插件源码与 DLL。现有：Sirenix（Odin）、SuperScrollView、vHierarchy、VoxelLabs（Ultimate Preview）、Demigiant（DOTween） |
 | `Scripts/` | 全部游戏 C#。按模块分子目录，见下表 |
 | `UI/` | UI 美术与界面预制体，**不含** `.cs` |
 | `Art/` | 角色、特效、场景模型等非 UI 美术 |

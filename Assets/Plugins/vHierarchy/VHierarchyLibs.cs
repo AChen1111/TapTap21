@@ -1424,7 +1424,7 @@ namespace VHierarchy.Libs
             }
             public static EditorWindow OpenColorPicker(System.Action<Color> colorChangedCallback, Color color, bool showAlpha = true, bool hdr = false)
             {
-#if UNITY_6000_5_OR_NEWER
+#if UNITY_6000_3_OR_NEWER
                 typeof(Editor).Assembly.GetType("UnityEditor.ColorPicker").InvokeMethod("Show", colorChangedCallback, color, showAlpha, hdr, false);
 #else
                 typeof(Editor).Assembly.GetType("UnityEditor.ColorPicker").InvokeMethod("Show", colorChangedCallback, color, showAlpha, hdr);
@@ -1889,6 +1889,13 @@ namespace VHierarchy.Libs
         public static int GetHandleId(this UnityEngine.SceneManagement.SceneHandle handle) => unchecked((int)handle.GetRawData());
         public static bool MatchesEntityId(this UnityEngine.SceneManagement.SceneHandle handle, EntityId id) =>
             handle.GetRawData() == EntityId.ToULong(id);
+#elif UNITY_6000_3_OR_NEWER
+        // 6.3.23 has EntityId / SceneHandle, but not ToULong / GetRawData (those landed in 6.5).
+        public static int ToInt(this EntityId id) => id;
+        public static EntityId ToEntityId(this int id) => id;
+        public static int GetObjectId(this Object o) => o != null ? o.GetInstanceID() : 0;
+        public static int GetHandleId(this UnityEngine.SceneManagement.Scene scene) => scene.handle;
+        public static int GetHandleId(this UnityEngine.SceneManagement.SceneHandle handle) => handle;
 #else
         public static int GetObjectId(this Object o) => o != null ? o.GetInstanceID() : 0;
         public static int GetHandleId(this UnityEngine.SceneManagement.Scene scene) => scene.handle;
@@ -1896,7 +1903,7 @@ namespace VHierarchy.Libs
 
         static int _GlobalObjectId_GlobalObjectIdentifierToInstanceIDSlow(GlobalObjectId id)
         {
-#if UNITY_6000_5_OR_NEWER
+#if UNITY_6000_3_OR_NEWER
             return GlobalObjectId.GlobalObjectIdentifierToEntityIdSlow(id).ToInt();
 #else
             return GlobalObjectId.GlobalObjectIdentifierToInstanceIDSlow(id);
@@ -1905,7 +1912,7 @@ namespace VHierarchy.Libs
 
         static void _GlobalObjectId_GlobalObjectIdentifiersToInstanceIDsSlow(GlobalObjectId[] identifiers, int[] outputInstanceIDs)
         {
-#if UNITY_6000_5_OR_NEWER
+#if UNITY_6000_3_OR_NEWER
             var outputEntityIds = new EntityId[outputInstanceIDs.Length];
             GlobalObjectId.GlobalObjectIdentifiersToEntityIdsSlow(identifiers, outputEntityIds);
             for (int i = 0; i < outputEntityIds.Length; i++)
@@ -1917,7 +1924,7 @@ namespace VHierarchy.Libs
 
         static void _GlobalObjectId_GetGlobalObjectIdsSlow(int[] ids, GlobalObjectId[] outputIdentifiers)
         {
-#if UNITY_6000_5_OR_NEWER
+#if UNITY_6000_3_OR_NEWER
             GlobalObjectId.GetGlobalObjectIdsSlow(ids.Select(r => r.ToEntityId()).ToArray(), outputIdentifiers);
 #else
             GlobalObjectId.GetGlobalObjectIdsSlow(ids, outputIdentifiers);
@@ -1926,7 +1933,7 @@ namespace VHierarchy.Libs
 
         public static Object _EditorUtility_InstanceIDToObject(int iid)
         {
-#if UNITY_6000_5_OR_NEWER
+#if UNITY_6000_3_OR_NEWER
             return EditorUtility.EntityIdToObject(iid.ToEntityId());
 #else
             return EditorUtility.InstanceIDToObject(iid);
@@ -1935,7 +1942,7 @@ namespace VHierarchy.Libs
 
         public static string _AssetDatabase_GetAssetPath(int instanceID)
         {
-#if UNITY_6000_5_OR_NEWER
+#if UNITY_6000_3_OR_NEWER
             return AssetDatabase.GetAssetPath(instanceID.ToEntityId());
 #else
             return AssetDatabase.GetAssetPath(instanceID);
@@ -1946,7 +1953,7 @@ namespace VHierarchy.Libs
         {
             get
             {
-#if UNITY_6000_5_OR_NEWER
+#if UNITY_6000_3_OR_NEWER
                 return Selection.entityIds.Select(r => r.ToInt()).ToArray();
 #else
                 return Selection.instanceIDs;
