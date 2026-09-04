@@ -1,0 +1,10 @@
+---
+description: Use shared project skills from .skills
+alwaysApply: true
+---
+
+Project skills have a single shared source under `.skills/`.
+
+Before matching work, read the relevant file completely:
+
+- Unity Editor, scene, GameObject, compilation, testing, screenshot, or Unity Pipeline work: `.skills/unity-pipeline/SKILL.md`
