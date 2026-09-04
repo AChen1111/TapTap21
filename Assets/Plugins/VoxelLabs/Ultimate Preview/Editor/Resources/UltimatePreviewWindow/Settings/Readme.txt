@@ -1,0 +1,1 @@
+Since lighting behavior can vary across Unity versions and render pipelines, you may need to adjust existing lights or add additional ones to achieve better-lit previews.

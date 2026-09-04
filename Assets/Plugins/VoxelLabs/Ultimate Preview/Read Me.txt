@@ -1,0 +1,37 @@
+===============================
+Ultimate Preview - Read Me
+===============================
+
+Thank you for using Ultimate Preview!
+
+This package includes support for:
+- Universal Render Pipeline (URP)
+- Built-in Render Pipeline
+- High Definition Render Pipeline (HDRP) – provided as a separate UnityPackage
+
+-------------------------------
+📌 Which files should I import?
+-------------------------------
+
+▶ For URP or Built-in Render Pipeline:
+   These are included by default — no extra package needed.
+
+▶ For HDRP:
+   If your project uses the High Definition Render Pipeline (HDRP), you must also import the dedicated HDRP package after importing the main package. 
+   The HDRP package is located at: 
+   Assets/Voxel Labs/Ultimate Preview/Packages/UltimatePreview_HDRP.unitypackage
+
+▶ After importing, it is recommended to restart the Unity Editor.
+
+⚠️ Importing the HDRP package into URP or Built-in projects is not necessary and may cause conflicts.
+
+-------------------------------
+📄 Need Help?
+-------------------------------
+
+- Full documentation is located at:  
+  Assets/Voxel Labs/Ultimate Preview/Ultimate Preview - Documentation.pdf
+- For support or bug reports, contact: contact@voxellabs.in
+
+Thank you for using Ultimate Preview!  
+– Voxel Labs

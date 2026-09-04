@@ -1,0 +1,117 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 861622789, guid: 87ee8e102c218af43a5c389ccb0e7752, type: 3}
+  m_Name: UltimatePreview - Settings
+  m_EditorClassIdentifier: 
+  "\u2002\u2032": 1
+  ultimateAnimationPreviewSettings:
+    isEnable: 1
+    disablePlayModeColorTint: 1
+    optimizePreviewInPlayMode: 1
+    isLightsEnable: 1
+    ambientColor: {r: 1, g: 1, b: 1, a: 1}
+    cameraSettings:
+      defaultZoom: 1
+      defaultCameraDirection: {x: 180, y: -16.5}
+      cameraFieldOfView: 30
+      clearFlags: 2
+      skyboxMaterial: {fileID: 0}
+      backgroundColor: {r: 0.14901961, g: 0.69803923, b: 1, a: 1}
+    additionalLights:
+    - enabled: 1
+      intensity: 0.5
+      color: {r: 1, g: 1, b: 1, a: 1}
+      rotation: {x: 160, y: 0}
+    - enabled: 1
+      intensity: 0.5
+      color: {r: 1, g: 1, b: 1, a: 1}
+      rotation: {x: 20, y: 0}
+    - enabled: 1
+      intensity: 0.5
+      color: {r: 1, g: 1, b: 1, a: 1}
+      rotation: {x: 90, y: 0}
+    floorSettings:
+      hideFloor: 0
+      floorTexture: {fileID: 0}
+      floorTiling: {x: 50, y: 50}
+      floorColor: {r: 1, g: 1, b: 1, a: 0.7}
+    defaultAvatarGameobject: {fileID: 0}
+    autoPlayAnimations: 1
+    resetPlaybackSpeed: 0
+    isAnimatorStatePreviewEnable: 1
+    isAnimatorTransitionPreviewEnable: 1
+    isAnimatorBlendTreePreviewEnable: 1
+    previewToolbarSettings:
+      buttonSize: 30
+      showPreviewToggle: 1
+      showSkyboxToggle: 1
+      showBGColorPicker: 1
+      showLightToggle: 1
+      showLockCameraToggle: 1
+      showCameraResetBtn: 1
+      showCameraRotateXBtn: 1
+      showCameraRotateYBtn: 1
+      showSettingsBtn: 0
+      showAnimationAutoPlayToggle: 0
+      showFloorToggle: 0
+      showPlayNextAnimBtn: 1
+      showPlayPrevAnimBtn: 1
+  ultimateGameobjectPreviewSettings:
+    isEnable: 1
+    disablePlayModeColorTint: 1
+    optimizePreviewInPlayMode: 1
+    isLightsEnable: 1
+    ambientColor: {r: 0.5882353, g: 0.5882353, b: 0.5882353, a: 1}
+    cameraSettings:
+      defaultZoom: 1
+      defaultCameraDirection: {x: 120, y: -20}
+      cameraFieldOfView: 30
+      clearFlags: 2
+      skyboxMaterial: {fileID: 0}
+      backgroundColor: {r: 0.827451, g: 0.99607843, b: 1, a: 1}
+    additionalLights:
+    - enabled: 1
+      intensity: 0.5
+      color: {r: 1, g: 1, b: 1, a: 1}
+      rotation: {x: 160, y: 0}
+    - enabled: 1
+      intensity: 0.5
+      color: {r: 1, g: 1, b: 1, a: 1}
+      rotation: {x: 20, y: 0}
+    - enabled: 1
+      intensity: 0.5
+      color: {r: 1, g: 1, b: 1, a: 1}
+      rotation: {x: 90, y: 0}
+    maxActiveUltimatePreviews: 10
+    isSceneGameobjectPreviewEnable: 1
+    previewWindowReloadDelay: 0.2
+    isParticlesPreviewEnable: 1
+    isUIPreviewEnable: 1
+    isVFXPreviewEnable: 1
+    isShowCanvas: 1
+    IsUiAlwaysFacingCamera: 1
+    autoPlayParticleEffects: 1
+    IsSpriteAlwaysFacingCamera: 1
+    hideParticlePlaybackSlider: 0
+    mouseButtonForPanning: 2
+    previewToolbarSettings:
+      buttonSize: 30
+      showPreviewToggle: 1
+      showSkyboxToggle: 1
+      showBGColorPicker: 1
+      showLightToggle: 1
+      showLockCameraToggle: 1
+      showCameraResetBtn: 1
+      showCameraRotateXBtn: 1
+      showCameraRotateYBtn: 1
+      showSettingsBtn: 0
+      showSceneGOPreviewToggle: 1

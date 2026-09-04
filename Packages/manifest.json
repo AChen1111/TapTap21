@@ -1,5 +1,9 @@
 {
   "dependencies": {
+    "com.boxqkrtm.ide.cursor": "file:com.boxqkrtm.ide.cursor",
+    "com.cysharp.unitask": "file:com.cysharp.unitask",
+    "com.singularitygroup.hotreload": "file:com.singularitygroup.hotreload",
+    "com.unity.pipeline": "file:com.unity.pipeline",
     "com.unity.ai.navigation": "2.0.14",
     "com.unity.collab-proxy": "2.13.6",
     "com.unity.ide.rider": "3.0.40",
