@@ -49,9 +49,10 @@ Use the **`unity-pipeline` skill**, which drives the live editor via the `unity`
 Canonical verb is `command`; the auth token is the `evalToken` field inside the port file
 `<liveProject>/Library/Pipeline/.unity-pipeline-port`, sent as `Authorization: Bearer <token>`.
 
-Edit→verify loop: make a logical change (may span several files) → `command recompile` →
-poll `command recompile_status` → `command run_tests --filter <TestClass>`. The server keeps the
-editor ticking while unfocused, so compiles proceed even when focus is elsewhere.
+Use Pipeline only for the Unity operations required by the user's task. Do not trigger
+compilation unless the user explicitly requests compilation, and do not run tests unless
+the user explicitly requests tests. Editing code, adding features, or making high-risk
+changes does not authorize either action. Do not append an automatic verification loop.
 
 ## Conventions
 
@@ -60,4 +61,3 @@ editor ticking while unfocused, so compiles proceed even when focus is elsewhere
 - Don't `git commit`/`push` without an explicit request.
 - Changelog entries: `[JIRA-KEY] <one short clause>` in Unreleased. No justification/why — state what changed, stop.
   Plain English, minimal code snippets/API names — describe the change, don't quote the implementation.
-
