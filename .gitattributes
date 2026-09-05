@@ -144,8 +144,10 @@ Packages/packages-lock.json linguist-generated
 *.zip                   lfs
 
 # Compiled Dynamic Library
-*.dll                   lfs
-*.pdb                   lfs
+# DLL 必须进普通 Git，不能走 LFS。克隆时若只拿到 LFS 指针，Unity 会报
+# VoxelLabs.UltimatePreview.Shared / Sirenix.OdinInspector 等命名空间不存在。
+*.dll                   binary
+*.pdb                   binary
 *.so                    lfs
 
 # Fonts
