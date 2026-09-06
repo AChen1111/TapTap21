@@ -1,6 +1,7 @@
 # ZTween API
 
-命名空间：`ZZ.ZTween`  
+命名空间：`ZZ.ZTween`      
+演示demo在 `Scene/Ztween`   
 用法：扩展方法，业务代码不要直接调 DOTween。
 
 ```csharp
