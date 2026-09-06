@@ -31,6 +31,8 @@ public class AudioSettingsService : MonoBehaviour
     {
         value = Mathf.Clamp01(value);
         PlayerPrefs.SetFloat(Prefix + type, value);
+        PlayerPrefs.Save();
+        Debug.Log($"[AudioSettingsService] 音量修改并保存，type={type}，value={value:0.000}。", this);
 
         if (mixer != null)
         {
