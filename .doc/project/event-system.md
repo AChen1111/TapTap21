@@ -67,4 +67,4 @@ EventCenter.Dispatch(GameEvent.RankChanged, 1, "ok");
 - 没有订阅者时 `Dispatch` 是空操作，不会报错。
 - 监听器按注册顺序同步执行。回调里不要再改同一事件的订阅列表，也不要做重活。
 - 调试日志走 `AChen.Log` 的 Event 分类。关 Player Logs 后不再打印订阅/派发明细。
-- 这是静态中心，Domain Reload 会清空。Play Mode 停掉后再进，旧订阅不会留下。
+- 这是静态中心。每次进入 Play Mode 时都会主动清空状态，即使关闭 Domain Reload，旧订阅也不会留下。

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Reflection;
 using AChen.Log;
+using UnityEngine;
 
 namespace AChen.Events
 {
@@ -11,6 +12,13 @@ namespace AChen.Events
     {
         static readonly Dictionary<string, Delegate> s_listeners = new Dictionary<string, Delegate>();
         static readonly Dictionary<string, Type> s_signatures = new Dictionary<string, Type>();
+
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetState()
+        {
+            s_listeners.Clear();
+            s_signatures.Clear();
+        }
 
         public static void AddListener(EventId evt, Action listener) =>
             Add(evt.Name, evt.HandlerType, listener);
