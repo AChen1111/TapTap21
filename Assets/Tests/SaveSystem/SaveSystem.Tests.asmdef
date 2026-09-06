@@ -1,0 +1,24 @@
+{
+    "name": "TapTap21.SaveSystem.Tests",
+    "rootNamespace": "TapTap21SaveSystemTests",
+    "references": [
+        "TapTap21.SaveSystem",
+        "UnityEngine.TestRunner"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": true,
+    "precompiledReferences": [
+        "nunit.framework.dll",
+        "LitJSON.dll"
+    ],
+    "autoReferenced": false,
+    "defineConstraints": [
+        "UNITY_INCLUDE_TESTS"
+    ],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

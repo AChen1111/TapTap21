@@ -6,7 +6,7 @@ using System.Text;
 using UnityEditor;
 using UnityEngine;
 
-namespace dyh
+namespace TapTap21.AudioSystem.dyh
 {
 
 /// <summary>根据 AudioConfig 资源名称生成音频 ID 常量类。</summary>

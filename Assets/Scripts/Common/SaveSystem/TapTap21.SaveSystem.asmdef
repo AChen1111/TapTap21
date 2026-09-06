@@ -1,0 +1,14 @@
+{
+    "name": "TapTap21.SaveSystem",
+    "rootNamespace": "TapTap21.SaveSystem",
+    "references": [],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
+}

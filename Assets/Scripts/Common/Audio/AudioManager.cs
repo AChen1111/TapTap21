@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Audio;
 
-namespace dyh
+namespace TapTap21.AudioSystem.dyh
 {
 
 public class AudioManager : MonoBehaviour

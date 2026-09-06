@@ -2,7 +2,7 @@ using System;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace dyh
+namespace TapTap21.AudioSystem.dyh
 {
 
 /// <summary>用于路由和音量控制的音频分类。</summary>

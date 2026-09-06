@@ -2,7 +2,7 @@ using UnityEngine;
 using UnityEngine.Audio;
 using System.Collections.Generic;
 
-namespace dyh
+namespace TapTap21.AudioSystem.dyh
 {
 
 public class AudioSettingsService : MonoBehaviour
