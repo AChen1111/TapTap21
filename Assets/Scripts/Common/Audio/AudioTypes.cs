@@ -1,4 +1,5 @@
 using System;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace dyh
@@ -15,14 +16,14 @@ public class AudioConfig : ScriptableObject
     /// <summary>兼容旧数据的音频 ID；为空时自动使用资源文件名。</summary>
     [HideInInspector] public string id;
     /// <summary>音频变体列表，每次播放时随机选择一个。</summary>
-    public AudioClip[] clips;
-    public AudioCategory category = AudioCategory.Sfx;
-    public bool loop;
-    public bool spatial3D;
-    [Range(0, 1)] public float volume = 1f;
-    public float pitchMin = 1f, pitchMax = 1f;
-    [Range(0, 256)] public int priority = 128;
-    public int maxInstances = 0;
+    [Header("音频文件列表")] public AudioClip[] clips;
+    [Header("音频类别")] public AudioCategory category = AudioCategory.Sfx;
+    [Header("音频是否循环")] public bool loop;
+    [Header("是否采用3D音效")] public bool spatial3D;
+    [Header("音量高低")][Range(0, 1)] public float volume = 1f;
+    [Header("音高范围")] public float pitchMin = 1f, pitchMax = 1f;
+    [Header("播放优先级")][Tooltip("数值越小，优先级越高。")][Range(0, 256)] public int priority = 128;
+    [Header("同一 ID 的最大同时播放数量，0 表示不限制。Music不存在同时播放")]public int maxInstances = 0;
     /// <summary>随机返回一个音频片段；未配置片段时返回 null。</summary>
     public AudioClip PickClip()
     {
@@ -92,7 +93,12 @@ public class AudioDatabase : ScriptableObject
                 }
             }
         }
-        return lookup.TryGetValue(id, out config);
+        var found = lookup.TryGetValue(id, out config);
+        if (found)
+            Debug.Log($"[AudioDatabase] 查找成功，id={id}，config={config.name}。", this);
+        else
+            Debug.LogWarning($"[AudioDatabase] 查找失败，id={id}。", this);
+        return found;
     }
 }
 }
