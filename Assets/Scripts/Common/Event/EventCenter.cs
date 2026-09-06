@@ -20,24 +20,53 @@ namespace AChen.Events
             s_signatures.Clear();
         }
 
+        /// <summary>订阅无参数事件。通常在 <c>OnEnable</c> 中调用。</summary>
+        /// <param name="evt">在 <see cref="GameEvent"/> 中定义的事件。</param>
+        /// <param name="listener">事件触发时同步执行的回调。</param>
+        /// <exception cref="ArgumentNullException"><paramref name="listener"/> 为空。</exception>
         public static void AddListener(EventId evt, Action listener) =>
             Add(evt.Name, evt.HandlerType, listener);
 
+        /// <summary>订阅带一个强类型参数的事件。参数类型由事件定义推断。</summary>
+        /// <typeparam name="T">事件参数类型。</typeparam>
+        /// <param name="evt">在 <see cref="GameEvent"/> 中定义的事件。</param>
+        /// <param name="listener">事件触发时同步执行的回调。</param>
+        /// <exception cref="ArgumentNullException"><paramref name="listener"/> 为空。</exception>
         public static void AddListener<T>(EventId<T> evt, Action<T> listener) =>
             Add(evt.Name, evt.HandlerType, listener);
 
+        /// <summary>订阅带两个强类型参数的事件。参数类型由事件定义推断。</summary>
+        /// <typeparam name="T1">第一个事件参数类型。</typeparam>
+        /// <typeparam name="T2">第二个事件参数类型。</typeparam>
+        /// <param name="evt">在 <see cref="GameEvent"/> 中定义的事件。</param>
+        /// <param name="listener">事件触发时同步执行的回调。</param>
+        /// <exception cref="ArgumentNullException"><paramref name="listener"/> 为空。</exception>
         public static void AddListener<T1, T2>(EventId<T1, T2> evt, Action<T1, T2> listener) =>
             Add(evt.Name, evt.HandlerType, listener);
 
+        /// <summary>取消无参数事件订阅。应与 <see cref="AddListener(EventId,Action)"/> 成对使用。</summary>
+        /// <param name="evt">订阅时使用的事件。</param>
+        /// <param name="listener">订阅时使用的同一个回调实例。</param>
         public static void RemoveListener(EventId evt, Action listener) =>
             Remove(evt.Name, evt.HandlerType, listener);
 
+        /// <summary>取消单参数事件订阅。应在 <c>OnDisable</c> 或销毁前调用。</summary>
+        /// <typeparam name="T">事件参数类型。</typeparam>
+        /// <param name="evt">订阅时使用的事件。</param>
+        /// <param name="listener">订阅时使用的同一个回调实例。</param>
         public static void RemoveListener<T>(EventId<T> evt, Action<T> listener) =>
             Remove(evt.Name, evt.HandlerType, listener);
 
+        /// <summary>取消双参数事件订阅。应在 <c>OnDisable</c> 或销毁前调用。</summary>
+        /// <typeparam name="T1">第一个事件参数类型。</typeparam>
+        /// <typeparam name="T2">第二个事件参数类型。</typeparam>
+        /// <param name="evt">订阅时使用的事件。</param>
+        /// <param name="listener">订阅时使用的同一个回调实例。</param>
         public static void RemoveListener<T1, T2>(EventId<T1, T2> evt, Action<T1, T2> listener) =>
             Remove(evt.Name, evt.HandlerType, listener);
 
+        /// <summary>同步派发无参数事件；没有监听器时为空操作。</summary>
+        /// <param name="evt">要派发的事件。</param>
         public static void Dispatch(EventId evt)
         {
             EnsureSignature(evt.Name, evt.HandlerType);
@@ -45,6 +74,10 @@ namespace AChen.Events
             Invoke<Action>(evt.Name, publisher, triggerFunction, listener => listener());
         }
 
+        /// <summary>同步派发带一个参数的事件。</summary>
+        /// <typeparam name="T">事件参数类型。</typeparam>
+        /// <param name="evt">要派发的事件。</param>
+        /// <param name="arg">传给所有监听器的参数。</param>
         public static void Dispatch<T>(EventId<T> evt, T arg)
         {
             EnsureSignature(evt.Name, evt.HandlerType);
@@ -52,6 +85,12 @@ namespace AChen.Events
             Invoke<Action<T>>(evt.Name, publisher, triggerFunction, listener => listener(arg));
         }
 
+        /// <summary>同步派发带两个参数的事件。</summary>
+        /// <typeparam name="T1">第一个事件参数类型。</typeparam>
+        /// <typeparam name="T2">第二个事件参数类型。</typeparam>
+        /// <param name="evt">要派发的事件。</param>
+        /// <param name="arg1">传给所有监听器的第一个参数。</param>
+        /// <param name="arg2">传给所有监听器的第二个参数。</param>
         public static void Dispatch<T1, T2>(EventId<T1, T2> evt, T1 arg1, T2 arg2)
         {
             EnsureSignature(evt.Name, evt.HandlerType);

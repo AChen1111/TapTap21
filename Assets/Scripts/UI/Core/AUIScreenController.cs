@@ -17,6 +17,7 @@ public abstract class AUIScreenController : MonoBehaviour, IUIScreenController
     /// <summary>界面 Id，默认与 Prefab 名相同。</summary>
     public string ScreenId { get; set; }
 
+    /// <summary>最近一次显示界面时传入的参数。带参数界面应使用泛型子类提供的强类型属性。</summary>
     protected IScreenProperties Properties { get; private set; }
 
     /// <summary>请求所属 Layer 关闭自己。</summary>
@@ -33,7 +34,7 @@ public abstract class AUIScreenController : MonoBehaviour, IUIScreenController
         get { return m_destroyOnClose; }
     }
 
-    //它所属的UIFrame
+    /// <summary>该界面所属的 UIFrame，供业务子类调用 Frame 级 API。</summary>
     protected UIFrame m_UIFrame;
 
     internal void SetUIFrame(UIFrame uiFrame)
@@ -75,6 +76,8 @@ public abstract class AUIScreenController : MonoBehaviour, IUIScreenController
     {
     }
 
+    /// <summary>保存显示参数。泛型 Panel/Window 基类会在这里检查参数类型。</summary>
+    /// <param name="properties">本次显示参数。</param>
     protected virtual void SetProperties(IScreenProperties properties)
     {
         Properties = properties;

@@ -9,6 +9,7 @@ using UnityEngine.UI;
 
 namespace AChen.UI
 {
+/// <summary>基于 SuperScrollView 的通用网格虚拟列表入口。</summary>
 public class GridListController : MonoBehaviour
 {
     [SerializeField] private LoopListView2 loopListView;
@@ -20,8 +21,15 @@ public class GridListController : MonoBehaviour
     private Func<LoopListView2, int, LoopListViewItem2> mOnGetItemHandler;
     private Tween m_MoveToSelectedTween;
     private string mCurrentPrefabName;
+    /// <summary>当前选中的数据索引；没有选中项时为 -1。</summary>
     public int SelectedIndex => mSelectedIndex;
 
+    /// <summary>从 Resources 异步加载行 Prefab 并绑定数据。Prefab 位于 Resources 时使用。</summary>
+    /// <typeparam name="TData">卡片数据类型。</typeparam>
+    /// <param name="rowPrefabKey">Resources 相对路径，不含扩展名。</param>
+    /// <param name="dataList">要显示的数据。</param>
+    /// <param name="onSelected">选中数据项后的回调。</param>
+    /// <param name="selectedIndex">初始选中索引，-1 表示不选中。</param>
     public UniTask InitList<TData>(
         string rowPrefabKey,
         List<TData> dataList,
@@ -36,6 +44,12 @@ public class GridListController : MonoBehaviour
         return LoadRowPrefabAsync(rowPrefabKey).ContinueWith(prefab => BindList(prefab, dataList));
     }
 
+    /// <summary>使用已持有的行 Prefab 立即绑定数据。Prefab 已由 Inspector 或其他系统提供时优先使用。</summary>
+    /// <typeparam name="TData">卡片数据类型。</typeparam>
+    /// <param name="rowPrefab">根节点实现 <see cref="IRowItem{TData}"/> 的行 Prefab。</param>
+    /// <param name="dataList">要显示的数据。</param>
+    /// <param name="onSelected">选中数据项后的回调。</param>
+    /// <param name="selectedIndex">初始选中索引，-1 表示不选中。</param>
     public void InitList<TData>(
         GameObject rowPrefab,
         List<TData> dataList,
@@ -129,7 +143,9 @@ public class GridListController : MonoBehaviour
         loopListView.RefreshAllShownItem();
     }
 
-    /// <summary>选中项可能在首屏外,仅当对应行未显示时滚过去. duration 为秒,ease 用 DOTween Ease,默认 InOutCubic.</summary>
+    /// <summary>仅当选中项当前不可见时滚动到该项。初始化或恢复选中位置后使用。</summary>
+    /// <param name="duration">滚动秒数；小于等于 0 时立即跳转。</param>
+    /// <param name="ease">动画缓动，默认 <see cref="Ease.InOutCubic"/>。</param>
     public void MoveToSelectedIfHidden(float duration = 0, Ease ease = Ease.InOutCubic)
     {
         CancelMoveToSelected();
