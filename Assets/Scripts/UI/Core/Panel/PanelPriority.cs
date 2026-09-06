@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace AChen.UI;
+
 /// <summary>
 /// Panel 挂到哪一层 para-layer。
 /// </summary>

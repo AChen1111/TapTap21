@@ -1,3 +1,5 @@
+namespace AChen.UI;
+
 ﻿using UnityEngine;
 
 /// <summary>

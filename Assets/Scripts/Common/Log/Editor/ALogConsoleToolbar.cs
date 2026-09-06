@@ -3,6 +3,8 @@ using System.Reflection;
 using UnityEditor;
 using UnityEngine;
 
+namespace AChen.Log;
+
 /// <summary>
 /// 把 ALog 的入口做成按钮挂在 Unity 内置 Console 的工具栏上(ConsoleWindow.drawCustomToolbarGui)。
 /// 分类下拉复用内置搜索框过滤,不再单独维护一份日志列表。

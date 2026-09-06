@@ -1,6 +1,8 @@
 using UnityEngine;
 using Debug = UnityEngine.Debug;
 
+namespace AChen.Log;
+
 /// <summary>
 /// 分类日志系统的运行时入口:给消息加上分类前缀后写入 Unity 控制台。
 /// 使用 ALog.Log / LogWarning / LogError 写入日志,分类取 ALogCategories 中的常量。

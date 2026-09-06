@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+namespace AChen.UI;
+
 //
 // 行数据接口
 public interface IRowItem<TData>

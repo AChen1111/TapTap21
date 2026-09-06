@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
+namespace AChen.UI;
+
 /// <summary>
 /// UI 层基类。打开、关闭等逻辑由子类实现。
 /// </summary>

@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+namespace AChen.UI;
+
 /// <summary>
 /// 管理 Window。有历史栈和队列，同一时间只有一个可交互，含弹窗。
 /// </summary>

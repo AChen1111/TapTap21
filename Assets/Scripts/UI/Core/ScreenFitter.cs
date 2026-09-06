@@ -1,6 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+namespace AChen.UI;
+
 /// <summary>
 /// 屏幕适配器
 /// </summary>

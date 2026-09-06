@@ -1,5 +1,7 @@
 using UnityEngine;
 
+namespace AChen.UI;
+
 /// <summary>
 /// Panel 基类。
 /// </summary>

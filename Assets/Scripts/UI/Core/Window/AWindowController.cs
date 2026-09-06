@@ -1,5 +1,7 @@
 using UnityEngine;
 
+namespace AChen.UI;
+
 /// <summary>
 /// Window 基类。
 /// </summary>

@@ -2,6 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 
+namespace AChen.Log;
+
 public enum ALogFrameKind
 {
     Application,

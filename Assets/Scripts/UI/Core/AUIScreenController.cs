@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System;
 
+namespace AChen.UI;
+
 /// <summary>
 /// UI 界面基类。业务请继承 AWindowController 或 APanelController。
 /// </summary>

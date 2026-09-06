@@ -4,6 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
+namespace AChen.UI;
+
 [Serializable]
 public class UiPrefixBind
 {

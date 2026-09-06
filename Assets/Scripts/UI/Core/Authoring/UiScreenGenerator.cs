@@ -2,8 +2,11 @@ using System;
 using System.IO;
 using System.Text;
 using System.Text.RegularExpressions;
+using AChen.Log;
 using Sirenix.OdinInspector;
 using UnityEngine;
+
+namespace AChen.UI;
 
 [AddComponentMenu("UI/UI Screen Generator")]
 public class UiScreenGenerator : MonoBehaviour
@@ -90,6 +93,7 @@ public class UiScreenGenerator : MonoBehaviour
         ScanUsings(binds, out bool useUi, out bool useTmp);
         var sb = new StringBuilder();
         sb.Append("using UnityEngine;\n");
+        sb.Append("using AChen.UI;\n");
         if (useUi)
         {
             sb.Append("using UnityEngine.UI;\n");
@@ -139,6 +143,10 @@ public class UiScreenGenerator : MonoBehaviour
         if (source.IndexOf("using UnityEngine;", StringComparison.Ordinal) < 0)
         {
             source = InsertUsing(source, "using UnityEngine;", nl);
+        }
+        if (source.IndexOf("using AChen.UI;", StringComparison.Ordinal) < 0)
+        {
+            source = InsertUsing(source, "using AChen.UI;", nl);
         }
         if (useUi && source.IndexOf("using UnityEngine.UI;", StringComparison.Ordinal) < 0)
         {

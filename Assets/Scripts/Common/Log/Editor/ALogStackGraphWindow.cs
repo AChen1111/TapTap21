@@ -4,6 +4,8 @@ using UnityEditor;
 using UnityEngine;
 using UnityEngine.UIElements;
 
+namespace AChen.Log;
+
 /// <summary>展示单条日志调用堆栈的可视化窗口,由内置 Console 工具栏的「堆栈图」按钮打开</summary>
 public class ALogStackGraphWindow : EditorWindow
 {

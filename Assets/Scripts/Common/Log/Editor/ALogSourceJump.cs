@@ -3,6 +3,8 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
+namespace AChen.Log;
+
 /// <summary>把栈帧定位到 C# 源码。</summary>
 public static class ALogSourceJump
 {

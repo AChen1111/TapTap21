@@ -1,3 +1,5 @@
+namespace AChen.UI;
+
 /// <summary>
 /// Window 打开时相对当前窗的排队策略。
 /// </summary>

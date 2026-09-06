@@ -2,6 +2,8 @@ using System.IO;
 using UnityEditor;
 using UnityEngine;
 
+namespace AChen.Log;
+
 /// <summary>确保 ALogSettings 资源存在,供控制台开关读写并打进出包体</summary>
 public static class ALogSettingsEditor
 {

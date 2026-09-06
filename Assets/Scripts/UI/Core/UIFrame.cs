@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+namespace AChen.UI;
+
 /// <summary>
 /// UI 入口。业务通过它打开/关闭 Panel 和 Window。
 /// </summary>

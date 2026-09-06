@@ -1,3 +1,5 @@
+namespace AChen.UI;
+
 /// <summary>
 /// Window 历史栈 / 队列中的一条记录。
 /// </summary>

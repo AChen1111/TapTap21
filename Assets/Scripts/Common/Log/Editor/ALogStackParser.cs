@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
+namespace AChen.Log;
+
 /// <summary>一条日志里的单个调用栈帧,FilePath为空表示是C层/无源码的帧</summary>
 public class ALogFrame
 {

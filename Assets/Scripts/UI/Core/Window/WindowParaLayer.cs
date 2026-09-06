@@ -1,6 +1,8 @@
 using UnityEngine;
 using System.Collections.Generic;
 
+namespace AChen.UI;
+
 /// <summary>
 /// 高优先级 Window（默认弹窗）所在层，由 WindowUILayer 控制。
 /// </summary>

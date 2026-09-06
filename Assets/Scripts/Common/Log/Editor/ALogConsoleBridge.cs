@@ -2,6 +2,8 @@ using System;
 using System.Reflection;
 using UnityEditor;
 
+namespace AChen.Log;
+
 /// <summary>
 /// 对 Unity 内置 Console(UnityEditor.ConsoleWindow / LogEntries)的反射访问封装。
 /// 这些都是 internal API,集中在这里以便 Unity 版本变动时只改一处;成员缺失时各方法安全降级。

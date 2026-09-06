@@ -1,10 +1,13 @@
 using System;
 using System.Collections.Generic;
+using AChen.Log;
 using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using SuperScrollView;
 using UnityEngine;
 using UnityEngine.UI;
+
+namespace AChen.UI;
 
 public class GridListController : MonoBehaviour
 {

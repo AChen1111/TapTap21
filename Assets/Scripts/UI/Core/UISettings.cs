@@ -1,6 +1,8 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
+namespace AChen.UI;
+
 /// <summary>
 /// UI 配置：Frame Prefab 以及实例化时要注册的界面。
 /// </summary>
