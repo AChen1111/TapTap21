@@ -7,8 +7,8 @@ using SuperScrollView;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AChen.UI;
-
+namespace AChen.UI
+{
 public class GridListController : MonoBehaviour
 {
     [SerializeField] private LoopListView2 loopListView;
@@ -183,4 +183,5 @@ public class GridListController : MonoBehaviour
         mOnSelectedCallback?.Invoke(dataIndex);
         loopListView.RefreshAllShownItem();
     }
+}
 }

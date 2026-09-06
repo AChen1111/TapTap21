@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System;
 
-namespace AChen.UI;
-
+namespace AChen.UI
+{
 /// <summary>
 /// UI 界面基类。业务请继承 AWindowController 或 APanelController。
 /// </summary>
@@ -159,4 +159,5 @@ public abstract class AUIScreenController : MonoBehaviour, IUIScreenController
 #endif
         Destroy(gameObject);
     }
+}
 }

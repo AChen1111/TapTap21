@@ -1,7 +1,7 @@
 using UnityEngine;
 
-namespace AChen.Log;
-
+namespace AChen.Log
+{
 /// <summary>日志系统运行时设置。出包时若 EnableInPlayer=false,ALog 不再写日志。</summary>
 public class ALogSettings : ScriptableObject
 {
@@ -28,4 +28,5 @@ public class ALogSettings : ScriptableObject
         s_instance = settings;
     }
 #endif
+}
 }

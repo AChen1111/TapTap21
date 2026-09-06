@@ -1,5 +1,5 @@
-namespace AChen.UI;
-
+namespace AChen.UI
+{
 ﻿using UnityEngine;
 
 /// <summary>
@@ -53,4 +53,5 @@ public class PanelUILayer : AUILayer<IPanelController> {
 
         screenTransform.SetParent(trans, false);
     }
+}
 }

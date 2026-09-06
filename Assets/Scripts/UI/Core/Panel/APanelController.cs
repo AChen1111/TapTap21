@@ -1,7 +1,7 @@
 using UnityEngine;
 
-namespace AChen.UI;
-
+namespace AChen.UI
+{
 /// <summary>
 /// Panel 基类。
 /// </summary>
@@ -30,4 +30,5 @@ public abstract class APanelController<TProperties> : APanelController
 
         Debug.LogError($"[APanelController] Properties type {properties.GetType()} does not match {typeof(TProperties)}.");
     }
+}
 }

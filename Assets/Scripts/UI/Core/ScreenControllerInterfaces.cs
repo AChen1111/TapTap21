@@ -1,5 +1,5 @@
-namespace AChen.UI;
-
+namespace AChen.UI
+{
 ﻿using System;
 
 /// <summary>
@@ -42,3 +42,4 @@ public interface IScreenProperties { }
 public interface IWindowProperties : IScreenProperties { }
 
 public interface IPanelProperties : IScreenProperties { }
+}

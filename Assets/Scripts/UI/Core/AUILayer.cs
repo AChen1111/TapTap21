@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections.Generic;
 
-namespace AChen.UI;
-
+namespace AChen.UI
+{
 /// <summary>
 /// UI 层基类。打开、关闭等逻辑由子类实现。
 /// </summary>
@@ -128,4 +128,5 @@ public abstract class AUILayer<TScreen> : MonoBehaviour where TScreen : IUIScree
             UnregisterScreen(screen.ScreenId, (TScreen) screen);
         }
     }
+}
 }

@@ -4,8 +4,8 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AChen.UI;
-
+namespace AChen.UI
+{
 [Serializable]
 public class UiPrefixBind
 {
@@ -155,4 +155,5 @@ public static class UiPrefixCollector
         }
     }
 #endif
+}
 }

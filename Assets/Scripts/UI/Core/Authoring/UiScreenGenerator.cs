@@ -6,8 +6,8 @@ using AChen.Log;
 using Sirenix.OdinInspector;
 using UnityEngine;
 
-namespace AChen.UI;
-
+namespace AChen.UI
+{
 [AddComponentMenu("UI/UI Screen Generator")]
 public class UiScreenGenerator : MonoBehaviour
 {
@@ -393,4 +393,5 @@ public class UiScreenGenerator : MonoBehaviour
         return binds;
     }
 #endif
+}
 }

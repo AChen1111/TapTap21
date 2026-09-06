@@ -7,8 +7,8 @@ using UnityEngine.EventSystems;
 using UnityEngine.InputSystem.UI;
 using UnityEngine.UI;
 
-namespace AChen.UI;
-
+namespace AChen.UI
+{
 public static class UIFrameworkTools
 {
     [MenuItem("Assets/Create/deVoid UI/UI Frame in Scene", priority = 2)]
@@ -143,4 +143,5 @@ public static class UIFrameworkTools
     private static void CreateNewPrefab(GameObject obj, string localPath) {
         PrefabUtility.SaveAsPrefabAsset(obj, localPath);
     }
+}
 }

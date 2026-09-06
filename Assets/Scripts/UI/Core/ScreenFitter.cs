@@ -1,8 +1,8 @@
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace AChen.UI;
-
+namespace AChen.UI
+{
 /// <summary>
 /// 屏幕适配器
 /// </summary>
@@ -28,4 +28,5 @@ public class ScreenFitter : MonoBehaviour
         m_Camera.orthographicSize = height/(2f * 100);
       }
    }
+}
 }

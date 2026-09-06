@@ -3,8 +3,8 @@ using UnityEditor;
 using UnityEditorInternal;
 using UnityEngine;
 
-namespace AChen.Log;
-
+namespace AChen.Log
+{
 /// <summary>把栈帧定位到 C# 源码。</summary>
 public static class ALogSourceJump
 {
@@ -39,4 +39,5 @@ public static class ALogSourceJump
             Debug.LogWarning($"[ALog] Failed to open source. Check Preferences > External Tools: {path}:{frame.Line}");
         }
     }
+}
 }

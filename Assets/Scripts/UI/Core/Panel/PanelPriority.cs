@@ -1,8 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace AChen.UI;
-
+namespace AChen.UI
+{
 /// <summary>
 /// Panel 挂到哪一层 para-layer。
 /// </summary>
@@ -66,4 +66,5 @@ public class PanelPriorityLayerList {
     public PanelPriorityLayerList(List<PanelPriorityLayerListEntry> entries) {
         paraLayers = entries;
     }
+}
 }

@@ -2,8 +2,8 @@ using System;
 using System.Reflection;
 using UnityEditor;
 
-namespace AChen.Log;
-
+namespace AChen.Log
+{
 /// <summary>
 /// 对 Unity 内置 Console(UnityEditor.ConsoleWindow / LogEntries)的反射访问封装。
 /// 这些都是 internal API,集中在这里以便 Unity 版本变动时只改一处;成员缺失时各方法安全降级。
@@ -84,4 +84,5 @@ public static class ALogConsoleBridge
     public static string GetSearchText() {
         return s_getFilteringText?.Invoke(null, null) as string ?? string.Empty;
     }
+}
 }

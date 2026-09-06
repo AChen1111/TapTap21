@@ -1,7 +1,7 @@
 using UnityEngine;
 
-namespace AChen.UI;
-
+namespace AChen.UI
+{
 /// <summary>
 /// Window 基类。
 /// </summary>
@@ -55,4 +55,5 @@ public abstract class AWindowController<TProperties> : AWindowController
 
         Debug.LogError($"[AWindowController] Properties type {properties.GetType()} does not match {typeof(TProperties)}.");
     }
+}
 }

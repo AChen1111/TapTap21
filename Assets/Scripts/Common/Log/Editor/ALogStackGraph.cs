@@ -2,8 +2,8 @@ using System;
 using System.Collections.Generic;
 using UnityEngine.UIElements;
 
-namespace AChen.Log;
-
+namespace AChen.Log
+{
 public enum ALogFrameKind
 {
     Application,
@@ -281,4 +281,5 @@ public class ALogStackGraph : VisualElement
                 return "stack-frame__kind--no-source";
         }
     }
+}
 }

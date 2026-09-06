@@ -1,8 +1,8 @@
 using System;
 using System.Collections.Generic;
 
-namespace AChen.UI;
-
+namespace AChen.UI
+{
 //
 // 行数据接口
 public interface IRowItem<TData>
@@ -16,4 +16,5 @@ public interface IRowItem<TData>
     // - selectedIndex：选中索引
     // - onSelected：选中回调
     void SetRowData(int rowIndex, List<TData> allData, int selectedIndex, Action<int> onSelected);
+}
 }

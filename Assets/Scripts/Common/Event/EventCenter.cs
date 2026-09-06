@@ -6,46 +6,67 @@ using AChen.Log;
 
 namespace AChen.Events
 {
-    /// <summary>进程内事件中心。事件名使用 <see cref="GameEvent"/> 中定义的字符串常量。</summary>
+    /// <summary>进程内事件中心。事件用 <see cref="GameEvent"/> 里声明的 <see cref="EventId"/>，类型跟事件走。</summary>
     public static class EventCenter
     {
-        static readonly Dictionary<string, Delegate> s_listeners = new();
+        static readonly Dictionary<string, Delegate> s_listeners = new Dictionary<string, Delegate>();
+        static readonly Dictionary<string, Type> s_signatures = new Dictionary<string, Type>();
 
-        public static void AddListener(string eventName, Action listener) => Add(eventName, listener);
-        public static void AddListener<T>(string eventName, Action<T> listener) => Add(eventName, listener);
-        public static void AddListener<T1, T2>(string eventName, Action<T1, T2> listener) => Add(eventName, listener);
+        public static void AddListener(EventId evt, Action listener) =>
+            Add(evt.Name, evt.HandlerType, listener);
 
-        public static void RemoveListener(string eventName, Action listener) => Remove(eventName, listener);
-        public static void RemoveListener<T>(string eventName, Action<T> listener) => Remove(eventName, listener);
-        public static void RemoveListener<T1, T2>(string eventName, Action<T1, T2> listener) => Remove(eventName, listener);
+        public static void AddListener<T>(EventId<T> evt, Action<T> listener) =>
+            Add(evt.Name, evt.HandlerType, listener);
 
-        /// <summary>发布一个无参数事件。</summary>
-        public static void Dispatch(string eventName)
+        public static void AddListener<T1, T2>(EventId<T1, T2> evt, Action<T1, T2> listener) =>
+            Add(evt.Name, evt.HandlerType, listener);
+
+        public static void RemoveListener(EventId evt, Action listener) =>
+            Remove(evt.Name, evt.HandlerType, listener);
+
+        public static void RemoveListener<T>(EventId<T> evt, Action<T> listener) =>
+            Remove(evt.Name, evt.HandlerType, listener);
+
+        public static void RemoveListener<T1, T2>(EventId<T1, T2> evt, Action<T1, T2> listener) =>
+            Remove(evt.Name, evt.HandlerType, listener);
+
+        public static void Dispatch(EventId evt)
         {
+            EnsureSignature(evt.Name, evt.HandlerType);
             GetPublisher(out string publisher, out string triggerFunction);
-            Invoke<Action>(eventName, publisher, triggerFunction, listener => listener());
+            Invoke<Action>(evt.Name, publisher, triggerFunction, listener => listener());
         }
 
-        /// <summary>发布一个带一个强类型参数的事件。</summary>
-        public static void Dispatch<T>(string eventName, T arg)
+        public static void Dispatch<T>(EventId<T> evt, T arg)
         {
+            EnsureSignature(evt.Name, evt.HandlerType);
             GetPublisher(out string publisher, out string triggerFunction);
-            Invoke<Action<T>>(eventName, publisher, triggerFunction, listener => listener(arg));
+            Invoke<Action<T>>(evt.Name, publisher, triggerFunction, listener => listener(arg));
         }
 
-        /// <summary>发布一个带两个强类型参数的事件。</summary>
-        public static void Dispatch<T1, T2>(string eventName, T1 arg1, T2 arg2)
+        public static void Dispatch<T1, T2>(EventId<T1, T2> evt, T1 arg1, T2 arg2)
         {
+            EnsureSignature(evt.Name, evt.HandlerType);
             GetPublisher(out string publisher, out string triggerFunction);
-            Invoke<Action<T1, T2>>(eventName, publisher, triggerFunction, listener => listener(arg1, arg2));
+            Invoke<Action<T1, T2>>(evt.Name, publisher, triggerFunction, listener => listener(arg1, arg2));
         }
 
-        static void Add(string eventName, Delegate listener)
+        static void Add(string eventName, Type signature, Delegate listener)
         {
-            Validate(eventName, listener);
+            if (listener == null)
+            {
+                throw new ArgumentNullException(nameof(listener));
+            }
+
+            EnsureSignature(eventName, signature);
             if (s_listeners.TryGetValue(eventName, out Delegate existing))
             {
-                EnsureSameSignature(eventName, existing, listener);
+                if (existing.GetType() != listener.GetType())
+                {
+                    throw new InvalidOperationException(
+                        $"Event '{eventName}' is already registered with a different listener signature.");
+                }
+
                 s_listeners[eventName] = Delegate.Combine(existing, listener);
                 Log("Subscribe", eventName, DescribeListener(listener));
                 return;
@@ -55,15 +76,25 @@ namespace AChen.Events
             Log("Subscribe", eventName, DescribeListener(listener));
         }
 
-        static void Remove(string eventName, Delegate listener)
+        static void Remove(string eventName, Type signature, Delegate listener)
         {
-            Validate(eventName, listener);
+            if (listener == null)
+            {
+                throw new ArgumentNullException(nameof(listener));
+            }
+
+            EnsureSignature(eventName, signature);
             if (!s_listeners.TryGetValue(eventName, out Delegate existing))
             {
                 return;
             }
 
-            EnsureSameSignature(eventName, existing, listener);
+            if (existing.GetType() != listener.GetType())
+            {
+                throw new InvalidOperationException(
+                    $"Event '{eventName}' is already registered with a different listener signature.");
+            }
+
             Delegate remaining = Delegate.Remove(existing, listener);
             if (remaining == null)
             {
@@ -108,6 +139,38 @@ namespace AChen.Events
             }
         }
 
+        static void EnsureSignature(string eventName, Type signature)
+        {
+            if (s_signatures.TryGetValue(eventName, out Type existing))
+            {
+                if (existing != signature)
+                {
+                    throw new InvalidOperationException(
+                        $"Event '{eventName}' expects {FormatSignature(existing)}, got {FormatSignature(signature)}.");
+                }
+
+                return;
+            }
+
+            s_signatures.Add(eventName, signature);
+        }
+
+        static string FormatSignature(Type signature)
+        {
+            if (signature == typeof(Action))
+            {
+                return "no parameters";
+            }
+
+            Type[] args = signature.GenericTypeArguments;
+            if (args.Length == 1)
+            {
+                return args[0].Name;
+            }
+
+            return args[0].Name + ", " + args[1].Name;
+        }
+
         static void GetPublisher(out string publisher, out string triggerFunction)
         {
             if (!ALog.Enabled)
@@ -143,28 +206,6 @@ namespace AChen.Events
             if (ALog.Enabled)
             {
                 ALog.Log($"[{action}] Event={eventName}; {detail}", ALogCategories.Event);
-            }
-        }
-
-        static void Validate(string eventName, Delegate listener)
-        {
-            if (string.IsNullOrWhiteSpace(eventName))
-            {
-                throw new ArgumentException("Event name cannot be empty.", nameof(eventName));
-            }
-
-            if (listener == null)
-            {
-                throw new ArgumentNullException(nameof(listener));
-            }
-        }
-
-        static void EnsureSameSignature(string eventName, Delegate existing, Delegate listener)
-        {
-            if (existing.GetType() != listener.GetType())
-            {
-                throw new InvalidOperationException(
-                    $"Event '{eventName}' is already registered with a different listener signature.");
             }
         }
     }
