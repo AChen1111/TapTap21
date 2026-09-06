@@ -11,7 +11,7 @@ MonoBehaviour:
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e54e511820b3cde478c9588535391266, type: 3}
   m_Name: Music
-  m_EditorClassIdentifier: Assembly-CSharp::dyh.AudioConfig
+  m_EditorClassIdentifier: Assembly-CSharp::TapTap21.AudioSystem.dyh.AudioConfig
   id: 
   clips:
   - {fileID: 8300000, guid: 19fe331e9ae07394bb44459be3917091, type: 3}
