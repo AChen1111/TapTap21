@@ -1409,6 +1409,43 @@ namespace SuperScrollView
             rtf.anchorMax = anchorMax;
         }
 
+        public void AddItemPrefab(ItemPrefabConfData data)
+        {
+            if (data == null || data.mItemPrefab == null)
+            {
+                return;
+            }
+            string prefabName = data.mItemPrefab.name;
+            if (mItemPoolDict.ContainsKey(prefabName))
+            {
+                return;
+            }
+            if (GetItemPrefabConfData(prefabName) == null)
+            {
+                mItemPrefabDataList.Add(data);
+            }
+            if (mListViewInited == false)
+            {
+                return;
+            }
+            RectTransform prefabRtf = data.mItemPrefab.GetComponent<RectTransform>();
+            if (prefabRtf == null)
+            {
+                Debug.LogError("RectTransform component is not found in the prefab " + prefabName);
+                return;
+            }
+            AdjustAnchor(prefabRtf);
+            AdjustPivot(prefabRtf);
+            if (data.mItemPrefab.GetComponent<LoopListViewItem2>() == null)
+            {
+                data.mItemPrefab.AddComponent<LoopListViewItem2>();
+            }
+            ItemPool pool = new ItemPool();
+            pool.Init(data.mItemPrefab, data.mPadding, data.mStartPosOffset, data.mInitCreateCount, mContainerTrans);
+            mItemPoolDict.Add(prefabName, pool);
+            mItemPoolList.Add(pool);
+        }
+
         void InitItemPool()
         {
             foreach (ItemPrefabConfData data in mItemPrefabDataList)
