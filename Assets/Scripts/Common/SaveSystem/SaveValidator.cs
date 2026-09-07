@@ -6,13 +6,18 @@ using System.Reflection;
 namespace TapTap21.SaveSystem.dyh
 {
     [AttributeUsage(AttributeTargets.Field | AttributeTargets.Property)]
+    /// <summary>标记存档中的必填字段或属性，null 和空白字符串无法通过校验。</summary>
     public sealed class SaveRequiredAttribute : Attribute { }
 
-    /// <summary>Basic safety checks plus optional business validation callbacks.</summary>
+    /// <summary>提供通用安全校验和可扩展的业务校验。</summary>
     public static class SaveValidator
     {
         private static readonly Dictionary<string, Delegate> validators = new Dictionary<string, Delegate>(StringComparer.Ordinal);
 
+        /// <summary>为指定存档定义注册业务校验函数。</summary>
+        /// <typeparam name="T">存档数据类型。</typeparam>
+        /// <param name="definition">需要校验的已注册定义。</param>
+        /// <param name="validator">返回 null 表示通过，否则返回错误消息。</param>
         public static void Register<T>(SaveDefinition<T> definition, Func<T, string> validator)
         {
             if (definition == null) throw new ArgumentNullException("definition");

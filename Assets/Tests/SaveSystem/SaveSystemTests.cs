@@ -190,6 +190,29 @@ namespace TapTap21SaveSystemTests
         }
 
         [Test]
+        public void StrongSlotIdsSupportFixedAndDynamicSlots()
+        {
+            SaveData expected = new SaveData { version = 7 };
+
+            SaveResult fixedSave = SaveSystem.Save(SaveDefinitions.Main, SaveSlots.Slot0, expected);
+            Assert.IsTrue(fixedSave.Success, fixedSave.Message);
+            Assert.AreEqual(7, SaveSystem.Load(SaveDefinitions.Main, SaveSlots.Slot0).Data.version);
+
+            SaveSlotId dynamicId = SaveSystem.CreateSlotId();
+            slots.Add(dynamicId.Value);
+            SaveSnapshot snapshot = SaveSystem.CreateSnapshot(dynamicId)
+                .SetMetadata("玩家自定义名称", "SampleScene", 10)
+                .Set(SaveDefinitions.Main, expected);
+
+            Assert.IsTrue(SaveSystem.SaveSlot(snapshot).Success);
+            SaveSlotInfo info = SaveSystem.GetSlotInfo(dynamicId);
+            Assert.AreEqual(dynamicId, info.Id);
+            Assert.AreEqual("玩家自定义名称", info.DisplayName);
+
+            SaveSystem.DeleteSlot(SaveSlots.Slot0);
+        }
+
+        [Test]
         public void InvalidNumericDataIsRejectedBeforeWriting()
         {
             SaveDefinition<SaveSystemTestData> definition = NewDefinition(Guid.NewGuid().ToString("N"));
@@ -210,7 +233,10 @@ namespace TapTap21SaveSystemTests
             File.WriteAllText(path, json);
             Assert.AreEqual(SaveStatus.VersionUnsupported, SaveSystem.Load(definition, slot).Status);
             SaveSystem.Save(definition, slot, new SaveData());
-            json = File.ReadAllText(path).Replace("TapTap21.SaveSystem.SaveData", "Not.A.Real.Type");
+            // 清除旧备份，确保下面的类型损坏场景不会被备份恢复掩盖。
+            string backupPath = path + ".bak";
+            if (File.Exists(backupPath)) File.Delete(backupPath);
+            json = File.ReadAllText(path).Replace(definition.Key, "not_the_registered_key");
             File.WriteAllText(path, json);
             Assert.AreEqual(SaveStatus.TypeMismatch, SaveSystem.Load(definition, slot).Status);
         }

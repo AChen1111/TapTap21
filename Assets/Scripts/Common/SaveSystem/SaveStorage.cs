@@ -273,7 +273,7 @@ namespace TapTap21.SaveSystem.dyh
             ReplaceFile(metadataTemp, metadataPath, metadataBackup);
         }
 
-        private static bool ValidateSlotId(string value, out string error)
+        internal static bool ValidateSlotId(string value, out string error)
         {
             error = null;
             if (string.IsNullOrWhiteSpace(value)) { error = "slotId 不能为空。"; return false; }

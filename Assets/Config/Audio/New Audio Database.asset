@@ -12,4 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: de79d62e608eb9944a4c426132a93995, type: 3}
   m_Name: New Audio Database
   m_EditorClassIdentifier: Assembly-CSharp::TapTap21.AudioSystem.dyh.AudioDatabase
-  entries: []
+  entries:
+  - {fileID: 11400000, guid: 938b458330ab036439f458712b0d5327, type: 2}

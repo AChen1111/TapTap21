@@ -3,19 +3,21 @@ using System.Collections.Generic;
 
 namespace TapTap21.SaveSystem.dyh
 {
+    /// <summary>项目全部存档定义的集中注册中心。</summary>
     public static class SaveDefinitions
     {
-        public static readonly SaveDefinition<SaveData> Main 
-                = SaveSystem.Register<SaveData>("main", "main.json", 1);
-        public static readonly SaveDefinition<PlayerSaveData> Player 
-                = SaveSystem.Register<PlayerSaveData>("player", "player.json", 1);
-        public static readonly SaveDefinition<InventorySaveData> Inventory 
-                = SaveSystem.Register<InventorySaveData>("inventory", "inventory.json", 1);
-        public static readonly SaveDefinition<SettingsSaveData> Settings 
-                = SaveSystem.Register<SettingsSaveData>("settings", "settings.json", 1);
+        public static readonly SaveDefinition<SaveData> Main =
+            SaveSystem.Register<SaveData>("main", "main.json", 1);
+        public static readonly SaveDefinition<PlayerSaveData> Player =
+            SaveSystem.Register<PlayerSaveData>("player", "player.json", 1);
+        public static readonly SaveDefinition<InventorySaveData> Inventory =
+            SaveSystem.Register<InventorySaveData>("inventory", "inventory.json", 1);
+        public static readonly SaveDefinition<SettingsSaveData> Settings =
+            SaveSystem.Register<SettingsSaveData>("settings", "settings.json", 1);
     }
 
     [Serializable]
+    /// <summary>最小示例数据。</summary>
     public class SaveData
     {
         public int version = 1;
