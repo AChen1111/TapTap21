@@ -5,5 +5,7 @@ namespace AChen.Events
     {
         /// <summary>示例：得分变化，参数为最新分数。</summary>
         public static readonly EventId<int> ScoreChanged = new EventId<int>("Demo.ScoreChanged");
+        /// <summary>调用LoadSceneWithPic时触发,加载场景时显示一张神图 </summary>
+        public static readonly EventId<float> StartShowShenTu=new EventId<float>($"SceneLoader.{nameof(StartShowShenTu)}");
     }
 }
