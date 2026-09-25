@@ -1,0 +1,8 @@
+---
+description: Write project docs under .doc/project
+alwaysApply: true
+---
+
+给人看的说明、API 和交付文档写在 `.doc/project/`，不要写到 `Assets/` 或其它 `.doc/` 子目录。
+
+文件名用小写短横线，例如 `player-input-movement.md`。
