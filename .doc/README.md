@@ -9,6 +9,7 @@
 | [project/event-system-api.md](project/event-system-api.md) | 事件系统 API |
 | [project/object-pool.md](project/object-pool.md) | 通用 Prefab 对象池用法 |
 | [project/object-pool-api.md](project/object-pool-api.md) | 对象池 API |
+| [project/timer.md](project/timer.md) | 计时器用法与实现 |
 | [project/ui-system.md](project/ui-system.md) | UI 系统用法 |
 | [project/ui-system-api.md](project/ui-system-api.md) | UI 系统 API |
 | [project/super-scroll-view.md](project/super-scroll-view.md) | Super ScrollView 使用指南 |
