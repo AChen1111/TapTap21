@@ -12,6 +12,8 @@
 | [project/timer.md](project/timer.md) | 计时器用法与实现 |
 | [project/ui-system.md](project/ui-system.md) | UI 系统用法 |
 | [project/ui-system-api.md](project/ui-system-api.md) | UI 系统 API |
+| [project/ui-adapter.md](project/ui-adapter.md) | UI 安全区、横排、竖排、扇形排列组件 |
+| [project/excel-table.md](project/excel-table.md) | Excel 导表、表头约定与游戏加载 |
 | [project/super-scroll-view.md](project/super-scroll-view.md) | Super ScrollView 使用指南 |
 | [project/super-scroll-view - api.md](project/super-scroll-view%20-%20api.md) | Super ScrollView API |
 | [unity-pipeline/](unity-pipeline/README.md) | Unity Pipeline 中文索引（命令原文为英文） |

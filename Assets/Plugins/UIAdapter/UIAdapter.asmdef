@@ -1,0 +1,4 @@
+{
+	"name": "UIAdapter",
+	"references": ["Unity.ugui"]
+}
