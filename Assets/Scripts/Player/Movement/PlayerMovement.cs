@@ -1,4 +1,5 @@
 using AChen.Log;
+using GamePlay.Gravity;
 using NUnit.Framework;
 using Player.Input;
 using Unity.Mathematics;
@@ -26,6 +27,10 @@ namespace Player.Movement
             {
                 ALog.LogError("没有给PlayerMovement指定脚部Collider!");
             }
+            if (_foot.isTrigger == false)
+            {
+                ALog.LogError("Player Foot碰撞箱必须是触发器!");
+            }
             _jumpTimes=_movementDataSO.JumpTimes;
         }
 
@@ -46,8 +51,9 @@ namespace Player.Movement
         void Jump()
         {
             if(_jumpTimes<=0)return;
+            int gDir=(int)GravityService.Instance.Direction;
             _rb2d.linearVelocity=new Vector2(_rb2d.linearVelocity.x,0);
-            _rb2d.AddForce(Vector2.up*_movementDataSO.JumpForce,ForceMode2D.Impulse);            
+            _rb2d.AddForce(Vector2.up*_movementDataSO.JumpForce*gDir,ForceMode2D.Impulse);            
             _jumpTimes--;
         }
         void Move(Vector2 moveDir)
