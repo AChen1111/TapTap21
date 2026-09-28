@@ -2,6 +2,7 @@ using System;
 using System.Text;
 using AChen.Log;
 using Cysharp.Threading.Tasks;
+using GamePlay.Gravity;
 using JetBrains.Annotations;
 using Sirenix.OdinInspector;
 using UnityEngine;
@@ -11,6 +12,11 @@ using ZZ.SceneLoader;
 public class Tester : MonoBehaviour
 {
     public string SceneName="TestScene";
+    [Button]
+    void FlipG()
+    {
+        GravityService.Instance.Flip();
+    }
     [Button("LoadScene")]
     void LoadScene(){
         SceneLoader.LoadScene(SceneName);

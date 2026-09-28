@@ -5,22 +5,23 @@ using System.Reflection.Metadata;
 
 namespace GamePlay.Gravity
 {
+    [RequireComponent(typeof(Rigidbody2D))]
     public class GravityBody : MonoBehaviour
     {
         private Rigidbody2D _rb2d;
 
         private float _originGravityScale;
 
-        [Tooltip("ÖØÁ¦·­×ªÊ±½«ÎïÌåÑØXÖá·­×ª")]
+        [Tooltip("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªÊ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Xï¿½á·­×ª")]
         public bool FlipX = false;
-        [Tooltip("ÖØÁ¦·­×ªÊ±½«ÎïÌåÑØYÖá·­×ª")]
+        [Tooltip("ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªÊ±ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Yï¿½á·­×ª")]
         public bool FlipY = true;
 
         private void Awake()
         {
             if (TryGetComponent<Rigidbody2D>(out _rb2d) == false)
             {
-                ALog.LogError($"{name} Ê¹ÓÃÁË GravityBody µ«Î´¹ÒÔØ \"Rigidbody2D\" ×é¼þ!");
+                ALog.LogError($"{name} Ê¹ï¿½ï¿½ï¿½ï¿½ GravityBody ï¿½ï¿½Î´ï¿½ï¿½ï¿½ï¿½ \"Rigidbody2D\" ï¿½ï¿½ï¿½!");
                 enabled = false;
                 return;
             }
