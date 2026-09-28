@@ -65,6 +65,7 @@
   <Project Path="Unity.Collections.CodeGen.csproj" />
   <Project Path="Assembly-CSharp-Editor.csproj" />
   <Project Path="SingularityGroup.HotReload.Runtime.Public.csproj" />
+  <Project Path="UIAdapter.csproj" />
   <Project Path="Unity.Mathematics.Editor.csproj" />
   <Project Path="Unity.VisualScripting.SettingsProvider.Editor.csproj" />
   <Project Path="UnityEditor.UI.Analytics.csproj" />
