@@ -1,0 +1,63 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 639a8fd13b4e00b4caa6ff014c771e9d, type: 3}
+  m_Name: SampleDialogue
+  m_EditorClassIdentifier: DialogueSystem.Runtime::DialogueSystem.DialogueGraphSO
+  graphName: Sample NPC
+  entryNodeId: node_start
+  nodes:
+  - id: node_start
+    title: 111
+    speaker: {fileID: 11400000, guid: dec99bf8ea75db14d99178abd90c4dd1, type: 2}
+    text: "\u4F60\u597D\u554A\uFF0C\u5192\u9669\u8005"
+    textId: 
+    nextNodeId: node_choice
+    editorPosition: {x: -28, y: 200.8}
+    nodeType: 0
+    choices: []
+    enterSignals: []
+  - id: node_choice
+    title: Choice
+    speaker: {fileID: 11400000, guid: dec99bf8ea75db14d99178abd90c4dd1, type: 2}
+    text: "\u6709\u4EC0\u4E48\u60F3\u95EE\u7684\u5417"
+    textId: 
+    nextNodeId: 
+    editorPosition: {x: 355.2, y: 164}
+    nodeType: 0
+    choices:
+    - choiceText: "\u4F60\u53EB\u4EC0\u4E48\u540D\u5B57"
+      nextNodeId: node_end_a
+      conditions: []
+    - choiceText: "\u6211\u662F\u8C01\uFF0C\u6211\u8BB0\u4E0D\u6E05\u4E86"
+      nextNodeId: node_end_b
+      conditions: []
+    enterSignals: []
+  - id: node_end_a
+    title: End A
+    speaker: {fileID: 11400000, guid: dec99bf8ea75db14d99178abd90c4dd1, type: 2}
+    text: "\u6211\u53EB\u5F00\u62D3\u8005"
+    textId: 
+    nextNodeId: 
+    editorPosition: {x: 760, y: 40}
+    nodeType: 0
+    choices: []
+    enterSignals: []
+  - id: node_end_b
+    title: End B
+    speaker: {fileID: 11400000, guid: dec99bf8ea75db14d99178abd90c4dd1, type: 2}
+    text: "\u4F60\u662F\u6D41\u8424\uFF0C\u6211\u6700\u597D\u7684\u4F19\u4F34"
+    textId: 
+    nextNodeId: 
+    editorPosition: {x: 760, y: 312}
+    nodeType: 0
+    choices: []
+    enterSignals: []
