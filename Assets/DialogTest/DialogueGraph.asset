@@ -18,10 +18,56 @@ MonoBehaviour:
   - id: 3a80a2825fd341418b07c90e05117eb4
     title: Dialogue
     speaker: {fileID: 11400000, guid: d4437e065a053c54d92b9fef14be702d, type: 2}
-    text: 
+    text: hello!
+    textId: 
+    nextNodeId: b4892594593e45bda3d82e5371658904
+    editorPosition: {x: 124, y: 101.333336}
+    nodeType: 0
+    choices:
+    - choiceText: Ch1
+      nextNodeId: 
+      conditions:
+      - type: 0
+        key: 
+        value: 
+    enterSignals: []
+  - id: 738cb1d11a3840a2a52fce9ac465228f
+    title: Dialogue
+    speaker: {fileID: 11400000, guid: d4437e065a053c54d92b9fef14be702d, type: 2}
+    text: hello 222
+    textId: 
+    nextNodeId: 5ad189da68524dd28946205223af2c2d
+    editorPosition: {x: 583.3333, y: 4.666666}
+    nodeType: 0
+    choices: []
+    enterSignals: []
+  - id: 5ad189da68524dd28946205223af2c2d
+    title: Dialogue
+    speaker: {fileID: 11400000, guid: d4437e065a053c54d92b9fef14be702d, type: 2}
+    text: hello 333
     textId: 
     nextNodeId: 
-    editorPosition: {x: 458.66666, y: 98}
+    editorPosition: {x: 987.3333, y: 101.333336}
+    nodeType: 0
+    choices: []
+    enterSignals: []
+  - id: b4892594593e45bda3d82e5371658904
+    title: Branch
+    speaker: {fileID: 11400000, guid: d4437e065a053c54d92b9fef14be702d, type: 2}
+    text: ciallo
+    textId: 
+    nextNodeId: 92f11423fe4343b2abdfe99b7365750b
+    editorPosition: {x: 483.33334, y: 400}
+    nodeType: 1
+    choices: []
+    enterSignals: []
+  - id: 92f11423fe4343b2abdfe99b7365750b
+    title: Dialogue
+    speaker: {fileID: 11400000, guid: d4437e065a053c54d92b9fef14be702d, type: 2}
+    text: branch out
+    textId: 
+    nextNodeId: 
+    editorPosition: {x: 913.3333, y: 400}
     nodeType: 0
     choices: []
     enterSignals: []
