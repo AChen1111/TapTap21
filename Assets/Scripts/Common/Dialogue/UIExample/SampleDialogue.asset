@@ -61,3 +61,26 @@ MonoBehaviour:
     nodeType: 0
     choices: []
     enterSignals: []
+  - id: 39c04b957f394fb79dcb8e0a748435b7
+    title: Branch
+    speaker: {fileID: 0}
+    text: 
+    textId: 
+    nextNodeId: 
+    editorPosition: {x: 329.6, y: 620}
+    nodeType: 1
+    choices: []
+    enterSignals: []
+  - id: 89fec2e5df484518818faafda28f44b0
+    title: Dialogue
+    speaker: {fileID: 0}
+    text: 
+    textId: 
+    nextNodeId: 
+    editorPosition: {x: -9.599991, y: 539.2}
+    nodeType: 0
+    choices:
+    - choiceText: Choice
+      nextNodeId: 
+      conditions: []
+    enterSignals: []

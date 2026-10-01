@@ -19,6 +19,8 @@ namespace DialogueSystem.Editor
         readonly Action _onStructureChanged;
         readonly Action _onChanged;
         readonly VisualElement _choiceRoot;
+        readonly ObjectField _speakerField;
+        readonly TextField _textField;
 
         public DialogueNodeView(DialogueGraphSO graph, DialogueNode data, Action onChanged, Action onStructureChanged)
         {
@@ -52,34 +54,36 @@ namespace DialogueSystem.Editor
             {
                 Change(() => data.nodeType = (DialogueNodeType)evt.newValue);
                 DefaultOutput.portName = data.IsBranch ? "Fallback" : "Next";
+                RefreshEditorVisibility();
                 RefreshTitle(_graph != null && _graph.entryNodeId == data.id);
             });
             extensionContainer.Add(typeField);
 
-            var speakerField = new ObjectField("Speaker")
+            _speakerField = new ObjectField("Speaker")
             {
                 objectType = typeof(SpeakerSO),
                 value = data.speaker
             };
-            speakerField.RegisterValueChangedCallback(evt =>
+            _speakerField.RegisterValueChangedCallback(evt =>
             {
                 Change(() => data.speaker = evt.newValue as SpeakerSO);
             });
-            extensionContainer.Add(speakerField);
+            extensionContainer.Add(_speakerField);
 
-            var textField = new TextField("Text") { value = data.text ?? string.Empty, multiline = true };
-            textField.style.minHeight = 72;
-            textField.RegisterValueChangedCallback(evt =>
+            _textField = new TextField("Text") { value = data.text ?? string.Empty, multiline = true };
+            _textField.style.minHeight = 72;
+            _textField.RegisterValueChangedCallback(evt =>
             {
                 Change(() => data.text = evt.newValue);
             });
-            extensionContainer.Add(textField);
+            extensionContainer.Add(_textField);
 
             extensionContainer.Add(BuildSignals());
             extensionContainer.Add(new Button(AddChoice) { text = "Add Choice" });
             _choiceRoot = new VisualElement();
             extensionContainer.Add(_choiceRoot);
             RebuildChoices();
+            RefreshEditorVisibility();
             RefreshExpandedState();
             RefreshPorts();
         }
@@ -203,6 +207,19 @@ namespace DialogueSystem.Editor
                 outputContainer.Add(port);
             }
 
+            RefreshPorts();
+        }
+
+        void RefreshEditorVisibility()
+        {
+            var isBranch = Data.IsBranch;
+            _speakerField.style.display = isBranch ? DisplayStyle.None : DisplayStyle.Flex;
+            _textField.style.display = isBranch ? DisplayStyle.None : DisplayStyle.Flex;
+
+            // A Line advances through its choices once choices are configured.
+            // Branch nodes keep their fallback output even when they use choices.
+            var showDefaultOutput = isBranch || !Data.HasChoices();
+            DefaultOutput.style.display = showDefaultOutput ? DisplayStyle.Flex : DisplayStyle.None;
             RefreshPorts();
         }
 
