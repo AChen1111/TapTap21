@@ -42,7 +42,7 @@ public sealed class AudioSourcePool : MonoBehaviour
         var source = go.AddComponent<AudioSource>();
         source.playOnAwake = false;
         sources.Add(source);
-        Debug.Log($"[AudioSourcePool] 创建播放器，source={source.name}，已创建={CreatedCount}。", this);
+        // Debug.Log($"[AudioSourcePool] 创建播放器，source={source.name}，已创建={CreatedCount}。", this);
         return source;
     }
     /// <summary>获取空闲播放器；必要时替换优先级较低的播放器。</summary>
