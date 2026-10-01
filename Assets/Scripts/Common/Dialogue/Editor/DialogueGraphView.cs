@@ -131,7 +131,11 @@ namespace DialogueSystem.Editor
                 if (node == null || !_views.TryGetValue(node.id, out var view))
                     continue;
 
-                Connect(view.DefaultOutput, FindView(node.nextNodeId));
+                // A Line with choices has no ordinary Next output in the editor.
+                // Keep the stored value intact so changing the node back to a
+                // choice-free Line does not silently discard existing data.
+                if (node.IsBranch || !node.HasChoices())
+                    Connect(view.DefaultOutput, FindView(node.nextNodeId));
                 if (node.choices == null)
                     continue;
 
