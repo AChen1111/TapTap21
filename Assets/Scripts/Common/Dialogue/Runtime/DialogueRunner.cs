@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Sirenix.OdinInspector;
 using UnityEngine;
 
 namespace DialogueSystem
@@ -115,6 +116,7 @@ namespace DialogueSystem
 
             return StartDialogue(CurrentTarget);
         }
+        [Button]
 
         public bool StartDialogue(DialogueTrigger trigger)
         {
