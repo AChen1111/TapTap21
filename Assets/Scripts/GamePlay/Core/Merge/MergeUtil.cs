@@ -61,6 +61,7 @@ namespace GamePlay.Core
             else
             {
                 OnMergeFailed?.Invoke();
+                ALog.LogError("[MergeUtil] 无法合成! 配方:" + cmp1);
                 return null;
             }
         }
