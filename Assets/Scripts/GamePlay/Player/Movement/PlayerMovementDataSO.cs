@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-namespace Player.Movement
+namespace GamePlay.Player.Movement
 {
     [CreateAssetMenu(fileName = "PlayerMovementDataSO", menuName = "Scriptable Objects/PlayerMovementDataSO")]
     public class PlayerMovementDataSO : ScriptableObject

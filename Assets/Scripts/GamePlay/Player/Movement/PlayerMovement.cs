@@ -1,10 +1,10 @@
 using AChen.Log;
 using GamePlay.Gravity;
 using NUnit.Framework;
-using Player.Input;
+using GamePlay.Player.Input;
 using Unity.Mathematics;
 using UnityEngine;
-namespace Player.Movement
+namespace GamePlay.Player.Movement
 {
     [RequireComponent(typeof(PlayerInput),typeof(Rigidbody2D))]
     public class PlayerMovement : MonoBehaviour
@@ -51,9 +51,8 @@ namespace Player.Movement
         void Jump()
         {
             if(_jumpTimes<=0)return;
-            int gDir=(int)GravityService.Instance.Direction;
             _rb2d.linearVelocity=new Vector2(_rb2d.linearVelocity.x,0);
-            _rb2d.AddForce(Vector2.up*_movementDataSO.JumpForce*gDir,ForceMode2D.Impulse);            
+            _rb2d.AddForce(Vector2.up*_movementDataSO.JumpForce,ForceMode2D.Impulse);            
             _jumpTimes--;
         }
         void Move(Vector2 moveDir)
