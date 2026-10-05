@@ -4,7 +4,7 @@ using Common.FlagsUtility;
 using Sirenix.OdinInspector;
 using UnityEngine;
 using UnityEngine.InputSystem;
-namespace Player.Input
+namespace GamePlay.Player.Input
 {
     public class PlayerInput : MonoBehaviour
     {

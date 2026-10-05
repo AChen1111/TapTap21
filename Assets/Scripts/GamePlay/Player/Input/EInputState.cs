@@ -1,6 +1,6 @@
 using System;
 using UnityEngine;
-namespace Player.Input
+namespace GamePlay.Player.Input
 {
     [Flags]
     public enum EInputState
