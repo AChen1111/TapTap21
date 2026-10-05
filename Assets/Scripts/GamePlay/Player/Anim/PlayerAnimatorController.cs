@@ -4,17 +4,12 @@ namespace GamePlay.Player.Anim
     [RequireComponent(typeof(Animator))]
     public class PlayerAnimatorController : MonoBehaviour
     {
-
-        void Start()
+        private Animator _animator;
+        void Awake()
         {
-
+            _animator=GetComponent<Animator>();
         }
 
-        // Update is called once per frame
-        void Update()
-        {
-
-        }
     }
 
 }

@@ -1,5 +1,6 @@
 using GamePlay.Gravity;
 using GamePlay.Inventory;
+using UI.GamePlay.HUD;
 
 namespace AChen.Events
 {
@@ -17,6 +18,10 @@ namespace AChen.Events
         public static readonly EventId<EGravityDirection> GravityFlipped = new EventId<EGravityDirection>("GravityService.GravityFlipped");
         /// <summary> 给InventoryController绑定model时触发 </summary>
         public static readonly EventId<InventoryModel> ModelBinded=new($"Inventory.{nameof(ModelBinded)}");
+        /// <summary>玩家鼠标开始拖拽物品栏格子</summary>
+        public static readonly EventId<SlotController> SlotBeginDragged=new($"Inventory.{nameof(SlotBeginDragged)}");
+        /// <summary>玩家鼠标停止拖拽物品栏格子</summary>
+        public static readonly EventId<SlotController> SlotEndDragged=new($"Inventory.{nameof(SlotEndDragged)}");
     
     }
 }
