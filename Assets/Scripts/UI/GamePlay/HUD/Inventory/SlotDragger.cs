@@ -1,4 +1,5 @@
 using System.Runtime.CompilerServices;
+using AChen.Events;
 using AChen.Log;
 using UI.GamePlay.HUD;
 using UnityEditor;
@@ -15,10 +16,10 @@ public class SlotDragger : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         _controller=GetComponent<SlotController>();
     }
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         _dragObj=ConstructDragObj(_controller.GetItemTemplate());
+        EventCenter.Dispatch(GameEvent.SlotBeginDragged,_controller);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -30,6 +31,7 @@ public class SlotDragger : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     {
         Destroy(_dragObj);
         _dragObj=null;
+        EventCenter.Dispatch(GameEvent.SlotEndDragged,_controller);
     }
 
     public void SetAttachRule(ItemAttachRuler ruler)

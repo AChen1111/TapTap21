@@ -11,6 +11,7 @@ namespace UI.GamePlay.HUD
         [SerializeField]private GameObject _item;
         [SerializeField]private TMP_Text txt_Count;
         [SerializeField,Sirenix.OdinInspector.ReadOnly]private int _count;
+        public ItemStack itemStack{get;private set;}
         private Sprite2ItemTable _table;
         /// <summary>
         /// 此格子上有物品
@@ -45,6 +46,7 @@ namespace UI.GamePlay.HUD
                 Img_Item.sprite=_table.GetSprite(itemStack.Item.GetType());
                 SetTextCount(itemStack.Count);
             }
+            this.itemStack= itemStack;
 
         } 
         public void SetTable(Sprite2ItemTable table)
@@ -85,4 +87,3 @@ namespace UI.GamePlay.HUD
     
     }
 }
-
