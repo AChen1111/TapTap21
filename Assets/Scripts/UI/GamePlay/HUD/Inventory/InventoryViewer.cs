@@ -7,6 +7,7 @@ namespace UI.GamePlay.HUD
     {
         [SerializeField]private Transform _contentTf;
         [SerializeField]private Sprite2ItemTable _table;
+        [SerializeField]private ItemAttachRuler _ruler;
         [SerializeField,Sirenix.OdinInspector.ReadOnly]private List<SlotController> _slots;
         public void InitSlots(int size,GameObject slot)
         {
@@ -17,6 +18,7 @@ namespace UI.GamePlay.HUD
                 var slotCl=Instantiate(slot,_contentTf).GetComponent<SlotController>();
                 slotCl.SetTable(_table);
                 _slots.Add(slotCl);
+                slotCl.GetComponent<SlotDragger>().SetAttachRule(_ruler);
             }
         }
         /// <summary>

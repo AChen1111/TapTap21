@@ -262,7 +262,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UI.GamePlay.HUD.InventoryView
   _contentTf: {fileID: 4423909678819204051}
   _table: {fileID: 11400000, guid: 413c7769b86ce1648995a82b60e305fc, type: 2}
+  _ruler: {fileID: 11400000, guid: c85e3bf5439eb5e46a6243b2faa66de7, type: 2}
   _slots: []
+  showGrid: 1
 --- !u!1 &4061998237186500131
 GameObject:
   m_ObjectHideFlags: 0
