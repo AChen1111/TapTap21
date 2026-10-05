@@ -7,13 +7,13 @@
   <Project Path="Unity.RenderPipelines.Core.Runtime.csproj" />
   <Project Path="Unity.Mathematics.csproj" />
   <Project Path="Unity.Timeline.Editor.csproj" />
+  <Project Path="Unity.Cinemachine.Editor.csproj" />
   <Project Path="Unity.Multiplayer.Center.Editor.csproj" />
   <Project Path="Unity.RenderPipelines.Core.Editor.csproj" />
-  <Project Path="Unity.Cinemachine.Editor.csproj" />
-  <Project Path="Unity.Collections.csproj" />
   <Project Path="UnityEngine.UI.csproj" />
   <Project Path="SingularityGroup.HotReload.Editor.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.2D.Runtime.csproj" />
+  <Project Path="Unity.Collections.csproj" />
   <Project Path="Unity.Pipeline.IlInterpreter.csproj" />
   <Project Path="Unity.Pipeline.csproj" />
   <Project Path="Unity.VisualScripting.Core.Editor.csproj" />

@@ -1,6 +1,6 @@
 namespace GamePlay.Core
 {
-    public enum EManEaterState
+    public enum E_Item_ManEaterState
     {
         /// <summary>
         /// 食人花种子

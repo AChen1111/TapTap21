@@ -1,14 +1,14 @@
 namespace GamePlay.Core
 {
-    public enum EThornState
+    public enum E_Item_TreeState
     {
         /// <summary>
-        /// 荆棘（失水）
+        /// 小树苗
         /// </summary>
-        Dry,
+        Small,
         /// <summary>
-        /// 荆棘（正常）
+        /// 大树
         /// </summary>
-        Normal
+        Big
     }
 }

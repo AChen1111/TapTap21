@@ -27,9 +27,9 @@
 | `typeOut` | string | 结果物品的类型名 |
 | `stateOut` | int | 结果物品的状态 |
 
-类型名写成类名，和 `item.GetType().ToString()` 一致。当前测试物品都在全局命名空间，所以填 `Tree`、`Water`、`BigTree`，不要加命名空间，不要加 `.cs`。
+类型名写成类名，和 `item.GetType().ToString()` 一致。当前测试物品都在全局命名空间，所以填 `Item_Tree`、`Item_Water`、`Item_BigTree`，不要加命名空间，不要加 `.cs`。
 
-同一对物品只配一个方向。运行时会先按传入顺序查，查不到再把两个物品对调查一次。不要把 `Water+Tree` 和 `Tree+Water` 配成两条不同结果。
+同一对物品只配一个方向。运行时会先按传入顺序查，查不到再把两个物品对调查一次。不要把 `Item_Water+Item_Tree` 和 `Item_Tree+Item_Water` 配成两条不同结果。
 
 同一组 `类型 + 状态 + 操作` 只保留一行。重复行导入时会被丢掉，控制台有 `Excel表导入数据错误`。
 
@@ -39,8 +39,8 @@
 
 | typeIn1 | stateIn1 | typeIn2 | stateIn2 | op | typeOut | stateOut |
 |---|---|---|---|---|---|---|
-| Water | 1 | Tree | 1 | 1 | BigTree | 1 |
-| Water | 2 | Tree | 2 | 2 | BigTree | 2 |
+| Item_Water | 1 | Item_Tree | 1 | 1 | Item_BigTree | 1 |
+| Item_Water | 2 | Item_Tree | 2 | 2 | Item_BigTree | 2 |
 
 ---
 
@@ -49,13 +49,13 @@
 结果类型必须是 `Item` 的具体子类，并且有无参构造函数。`CopyItem` 要新建对象，并把 `State` 抄过去。
 
 ```csharp
-public class BigTree : Item
+public class Item_BigTree : Item
 {
     public override int State { get; set; }
 
     public override Item CopyItem()
     {
-        var copy = new BigTree();
+        var copy = new Item_BigTree();
         copy.State = State;
         return copy;
     }
@@ -64,7 +64,7 @@ public class BigTree : Item
 
 物品类和 `MergeUtil` 放在同一个程序集里（现在都是 `Assembly-CSharp`）。`typeOut` 靠 `Type.GetType` 用类名创建，拆到别的程序集后短类名会创建失败，这一行配方不会进表。
 
-参与合成的实例，`State` 必须是表里写的那个数。`new Water()` 若没有在构造函数里赋值，`State` 是 0，对不上表里的 1。
+参与合成的实例，`State` 必须是表里写的那个数。`new Item_Water()` 若没有在构造函数里赋值，`State` 是 0，对不上表里的 1。
 
 ---
 
@@ -73,7 +73,7 @@ public class BigTree : Item
 ```csharp
 using GamePlay.Core;
 
-BigTree result = MergeUtil.Merge<BigTree>(water, tree, 1, () =>
+Item_BigTree result = MergeUtil.Merge<Item_BigTree>(water, tree, 1, () =>
 {
     Debug.LogError("没有这条配方");
 });
@@ -92,7 +92,7 @@ if (result == null)
 | `OnMergeFailed` | 两个顺序都没有配方时调用，可省略 |
 | 返回值 | 新物品。类型是 `typeOut`，状态是 `stateOut`。没有配方，或你写的泛型不是结果类型时，返回 `null` |
 
-泛型要写成表里的结果类型。上面这条结果是 `BigTree`，就要写 `Merge<BigTree>`。写成 `Merge<Tree>` 时配方可能已经命中，但转换失败，返回 `null`，并且不会走 `OnMergeFailed`。
+泛型要写成表里的结果类型。上面这条结果是 `Item_BigTree`，就要写 `Merge<Item_BigTree>`。写成 `Merge<Item_Tree>` 时配方可能已经命中，但转换失败，返回 `null`，并且不会走 `OnMergeFailed`。
 
 返回的是复制体，改它的 `State` 不会改表里的原型，也不会改传入的 `water` / `tree`。
 
@@ -102,7 +102,7 @@ if (result == null)
 MergeUtil.UpdateMergeTable();
 ```
 
-加载成功后，控制台会打出每一条可用配方，例如 `Water#1#Tree#1#1 -> BigTree#1`。某行没出现，就是类型名创建失败，或和已有行重复。
+加载成功后，控制台会打出每一条可用配方，例如 `Item_Water#1#Item_Tree#1#1 -> Item_BigTree#1`。某行没出现，就是类型名创建失败，或和已有行重复。
 
 ---
 
@@ -114,6 +114,6 @@ MergeUtil.UpdateMergeTable();
 类型1#状态1#类型2#状态2#操作
 ```
 
-`Merge(water, tree, 1)` 在 `water.State == 1`、`tree.State == 1` 时，先查 `Water#1#Tree#1#1`，没有再查 `Tree#1#Water#1#1`。命中后 `CopyItem()`，并把原型上的 `stateOut` 带到副本。
+`Merge(water, tree, 1)` 在 `water.State == 1`、`tree.State == 1` 时，先查 `Item_Water#1#Item_Tree#1#1`，没有再查 `Item_Tree#1#Item_Water#1#1`。命中后 `CopyItem()`，并把原型上的 `stateOut` 带到副本。
 
 五个字段都参与比较。状态差 1，或 `op` 不同，就是另一条配方。没有命中就失败，不会按“最接近的一行”凑结果。

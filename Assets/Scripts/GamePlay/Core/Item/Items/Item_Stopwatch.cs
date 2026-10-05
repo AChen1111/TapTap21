@@ -1,23 +1,23 @@
 using UnityEngine;
 namespace GamePlay.Core
 {
-    public class Stopwatch : Item
+    public class Item_Stopwatch : Item
     {
 
-        public override string Name => nameof(Stopwatch);
+        public override string Name => nameof(Item_Stopwatch);
 
         public override int Id => 8;
 
         public override int State { get ; set ; }
 
-        public Stopwatch()
+        public Item_Stopwatch()
         {
             State=0;
         }
 
         public override Item CopyItem()
         {
-            return new Stopwatch();
+            return new Item_Stopwatch();
         }
     }
 
