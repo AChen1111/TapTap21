@@ -1,4 +1,5 @@
 using GamePlay.Gravity;
+using GamePlay.Inventory;
 
 namespace AChen.Events
 {
@@ -14,5 +15,8 @@ namespace AChen.Events
         public static readonly EventId<float, EGravityDirection> GravityChanged = new EventId<float, EGravityDirection>("GravityService.GravityChanged");
         /// <summary>仅当场景重力翻转时触发，参数为当前重力方向</summary>
         public static readonly EventId<EGravityDirection> GravityFlipped = new EventId<EGravityDirection>("GravityService.GravityFlipped");
+        /// <summary> 给InventoryController绑定model时触发 </summary>
+        public static readonly EventId<InventoryModel> ModelBinded=new($"Inventory.{nameof(ModelBinded)}");
+    
     }
 }

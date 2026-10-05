@@ -1,6 +1,6 @@
 namespace GamePlay.Core
 {
-    public enum EFernState
+    public enum E_Item_FernState
     {
         /// <summary>
         /// 1格子高

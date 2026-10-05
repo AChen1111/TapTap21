@@ -1,6 +1,6 @@
 namespace GamePlay.Core
 {
-    public enum EVineState
+    public enum E_Item_VineState
     {
         /// <summary>
         /// 枯萎的藤蔓

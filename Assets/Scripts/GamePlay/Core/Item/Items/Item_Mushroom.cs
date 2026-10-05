@@ -1,23 +1,23 @@
 using UnityEngine;
 namespace GamePlay.Core
 {
-    public class Water : Item
+    public class Item_Mushroom : Item
     {
 
-        public override string Name => nameof(Water);
+        public override string Name => nameof(Item_Mushroom);
 
-        public override int Id => 0;
+        public override int Id => 3;
 
         public override int State { get ; set ; }
 
-        public Water()
+        public Item_Mushroom()
         {
             State=0;
         }
 
         public override Item CopyItem()
         {
-            return new Water();
+            return new Item_Mushroom();
         }
     }
 
