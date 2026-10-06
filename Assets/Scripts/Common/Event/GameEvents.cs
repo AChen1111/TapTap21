@@ -1,6 +1,7 @@
 using GamePlay.Gravity;
 using GamePlay.Inventory;
 using UI.GamePlay.HUD;
+using UnityEngine;
 
 namespace AChen.Events
 {
@@ -19,9 +20,11 @@ namespace AChen.Events
         /// <summary> 给InventoryController绑定model时触发 </summary>
         public static readonly EventId<InventoryModel> ModelBinded=new($"Inventory.{nameof(ModelBinded)}");
         /// <summary>玩家鼠标开始拖拽物品栏格子</summary>
-        public static readonly EventId<SlotController> SlotBeginDragged=new($"Inventory.{nameof(SlotBeginDragged)}");
+        public static readonly EventId<GameObject> SlotBeginDragged=new($"Inventory.{nameof(SlotBeginDragged)}");
         /// <summary>玩家鼠标停止拖拽物品栏格子</summary>
-        public static readonly EventId<SlotController> SlotEndDragged=new($"Inventory.{nameof(SlotEndDragged)}");
+        public static readonly EventId<GameObject> SlotEndDragged=new($"Inventory.{nameof(SlotEndDragged)}");
+        /// <summary> 玩家按下交互键</summary>
+        public static readonly EventId OnInteractKeyPressed=new("Input.InteractKeyPressed");
     
     }
 }
