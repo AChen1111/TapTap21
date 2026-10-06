@@ -19,7 +19,7 @@ public class SlotDragger : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     public void OnBeginDrag(PointerEventData eventData)
     {
         _dragObj=ConstructDragObj(_controller.GetItemTemplate());
-        EventCenter.Dispatch(GameEvent.SlotBeginDragged,_controller);
+        EventCenter.Dispatch(GameEvent.SlotBeginDragged,_dragObj);
     }
 
     public void OnDrag(PointerEventData eventData)
@@ -29,9 +29,7 @@ public class SlotDragger : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
-        Destroy(_dragObj);
-        _dragObj=null;
-        EventCenter.Dispatch(GameEvent.SlotEndDragged,_controller);
+        EventCenter.Dispatch(GameEvent.SlotEndDragged,_dragObj);
     }
 
     public void SetAttachRule(ItemAttachRuler ruler)
@@ -48,17 +46,13 @@ public class SlotDragger : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         {
             return;
         }
-        var worldPos=Camera.main.ScreenToWorldPoint(new Vector3(eventData.position.x,eventData.position.y,-Camera.main.transform.position.z));
-        if(_ruler.enableAttach)_dragObj.transform.position=GetAttachVar(worldPos,_ruler);
-        else _dragObj.transform.position=worldPos;
+        if(_ruler.enableAttach)_dragObj.GetComponent<RectTransform>().position=GetAttachVar(eventData.position,_ruler);
+        else _dragObj.GetComponent<RectTransform>().position=eventData.position;
     }
 
     GameObject ConstructDragObj(GameObject obj)
     {
-        var ret=new GameObject();
-        var sr=ret.AddComponent<SpriteRenderer>();
-        sr.sprite=obj.GetComponent<Image>().sprite;
-        sr.transform.position=Vector3.zero;
+        var ret=Instantiate(obj,transform);
         return ret;
     }
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

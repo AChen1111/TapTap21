@@ -14,7 +14,6 @@ namespace GamePlay.Core
         private E_Item_TreeState _state;
         public Item_Tree()
         {
-
         }
 
         public override Item CopyItem()

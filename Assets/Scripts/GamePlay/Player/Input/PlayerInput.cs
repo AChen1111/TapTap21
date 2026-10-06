@@ -1,4 +1,5 @@
 using System;
+using AChen.Events;
 using AChen.Log;
 using Common.FlagsUtility;
 using Sirenix.OdinInspector;
@@ -32,12 +33,16 @@ namespace GamePlay.Player.Input
         void OnEnable()
         {
             _input.Player.Jump.started+=OnJump;
+            _input.Player.Interact.started+=OnInteract;
         }
 
         void OnDisable()
         {
             _input.Player.Jump.started-=OnJump;
+            _input.Player.Interact.started-=OnInteract;
         }
+
+
         void OnDestroy()
         {
             if (_input != null)
@@ -92,6 +97,10 @@ namespace GamePlay.Player.Input
         void DebugShowInputStates()
         {
             ALog.Log(_inputState.ToString());
+        }
+        private void OnInteract(InputAction.CallbackContext context)
+        {
+            EventCenter.Dispatch(GameEvent.OnInteractKeyPressed);
         }
     }
 }
