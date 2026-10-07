@@ -1,0 +1,66 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1b8c3d5e7f9042a6b0d1e2f3a4c59687, type: 3}
+  m_Name: ItemPrefabCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::GamePlay.Scene.ItemPrefabCatalog
+  _entries:
+  - _itemTypeName: GamePlay.Core.Item_Water
+    _state: 0
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_Tree
+    _state: 0
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_Tree
+    _state: 1
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_Spore
+    _state: 0
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_Mushroom
+    _state: 0
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_ManEater
+    _state: 0
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_ManEater
+    _state: 1
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_FernSeed
+    _state: 0
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_Fern
+    _state: 0
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_Fern
+    _state: 1
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_Fern
+    _state: 2
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_Thorn
+    _state: 0
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_Thorn
+    _state: 1
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_Stopwatch
+    _state: 0
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_Shovel
+    _state: 0
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_WindSeed
+    _state: 0
+    _prefab: {fileID: 0}
+  - _itemTypeName: GamePlay.Core.Item_Driftwood
+    _state: 0
+    _prefab: {fileID: 0}

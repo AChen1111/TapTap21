@@ -9,6 +9,7 @@ namespace GamePlay.Tests.Items
         [TestCase(typeof(Item_Shovel), "Item_Shovel", 9)]
         [TestCase(typeof(Item_WindSeed), "Item_WindSeed", 11)]
         [TestCase(typeof(Item_Driftwood), "Item_Driftwood", 12)]
+        [TestCase(typeof(Item_FernSeed), "Item_FernSeed", 5)]
         public void Constructor_InitializesIdentityAndDefaultState(
             Type itemType, string expectedName, int expectedId)
         {
@@ -22,6 +23,7 @@ namespace GamePlay.Tests.Items
         [TestCase(typeof(Item_Shovel))]
         [TestCase(typeof(Item_WindSeed))]
         [TestCase(typeof(Item_Driftwood))]
+        [TestCase(typeof(Item_FernSeed))]
         public void CopyItem_PreservesDataAndReturnsIndependentInstance(Type itemType)
         {
             Item original = (Item)Activator.CreateInstance(itemType);
