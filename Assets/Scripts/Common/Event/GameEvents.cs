@@ -25,6 +25,8 @@ namespace AChen.Events
         public static readonly EventId<GameObject> SlotEndDragged=new($"Inventory.{nameof(SlotEndDragged)}");
         /// <summary> 玩家按下交互键</summary>
         public static readonly EventId OnInteractKeyPressed=new("Input.InteractKeyPressed");
+        /// <summary> 玩家在花篮停靠点按下按键召回花篮 </summary>
+        public static readonly EventId<Vector3> CallFlowerBasket=new($"GamePlay.Scene.{CallFlowerBasket}");
     
     }
 }
