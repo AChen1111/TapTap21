@@ -1554,6 +1554,18 @@ PrefabInstance:
       propertyPath: m_Name
       value: Water
       objectReference: {fileID: 0}
+    - target: {fileID: 2655366646249709828, guid: 94f04e17184757d47ae5d9e9680323a0, type: 3}
+      propertyPath: SelectBoxColor.b
+      value: 0.05180182
+      objectReference: {fileID: 0}
+    - target: {fileID: 2655366646249709828, guid: 94f04e17184757d47ae5d9e9680323a0, type: 3}
+      propertyPath: SelectBoxColor.g
+      value: 0.509434
+      objectReference: {fileID: 0}
+    - target: {fileID: 2655366646249709828, guid: 94f04e17184757d47ae5d9e9680323a0, type: 3}
+      propertyPath: SelectBoxColor.r
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5201399413468172787, guid: 94f04e17184757d47ae5d9e9680323a0, type: 3}
       propertyPath: m_Mesh
       value: 
