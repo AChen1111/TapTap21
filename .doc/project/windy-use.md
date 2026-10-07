@@ -1,6 +1,10 @@
 # 起点式 2D 风场：快速升举与末端悬浮
 
-命名空间：`GamePlay.Wind`。预制体：`Assets/Prefabs/Wind/WindArea2D.prefab`。
+命名空间：`GamePlay.Wind`。
+
+代码目录：`Assets/Scripts/GamePlay/Scene/SceneItems/Wind/`。
+
+预制体：`Assets/Prefabs/GamePlay/Scene/Items/Wind/WindArea2D.prefab`。
 
 ## 运行规则
 
