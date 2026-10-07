@@ -29,6 +29,7 @@ namespace UI.GamePlay.HUD
             for(int i = 0; i < model.Size; ++i)
             {
                 _slots[i].UpdateInfo(model[i]);
+                _slots[i].GetComponent<SlotDragger>().SetInventorySource(model, i);
             }
         }
     }

@@ -15,52 +15,52 @@ MonoBehaviour:
   _entries:
   - _itemTypeName: GamePlay.Core.Item_Water
     _state: 0
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_Tree
     _state: 0
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_Tree
     _state: 1
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_Spore
     _state: 0
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_Mushroom
     _state: 0
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_ManEater
     _state: 0
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_ManEater
     _state: 1
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_FernSeed
     _state: 0
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_Fern
     _state: 0
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_Fern
     _state: 1
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_Fern
     _state: 2
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_Thorn
     _state: 0
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_Thorn
     _state: 1
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_Stopwatch
     _state: 0
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_Shovel
     _state: 0
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_WindSeed
     _state: 0
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}
   - _itemTypeName: GamePlay.Core.Item_Driftwood
     _state: 0
-    _prefab: {fileID: 0}
+    _prefab: {fileID: 780000000000000001, guid: a1b2c3d4e5f6478890abcdef12345678, type: 3}

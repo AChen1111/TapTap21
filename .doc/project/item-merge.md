@@ -1,119 +1,106 @@
-# 物品合成
+# 物品配方与操作号
 
 命名空间：`GamePlay.Core`  
 入口：`MergeUtil`  
 配表：`ExcelData/ItemMergeTable.xlsx`  
 生成类：`itemmergetable`  
-数据：`Assets/Resources/DataTable/itemmergetable.bytes`
+当前运行时数据：`Assets/Scripts/GamePlay/Core/Item/Resources/DataTable/itemmergetable.bytes`
 
-合成结果由五件事决定：物品 1 的类型、物品 1 的状态、物品 2 的类型、物品 2 的状态、操作号。命中后得到一个新的 `Item`，它的类型和 `State` 都来自表。
+当前 Excel 已配置 **13 条配方**。每条配方由两个输入物品的类型、状态和 `op` 决定输出物品类型与状态。输入顺序可以相反，`MergeUtil` 会按两个顺序查找。
 
-导表流程见 [excel-table.md](excel-table.md)。本文只写合成表怎么填、代码怎么调。
+运行时通过 `Resources.Load<TextAsset>("DataTable/itemmergetable")` 加载数据，使用的是 Resources 相对路径。背包拖拽、场景放置和融合替换的完整流程见 [scene-item-prefab.md](scene-item-prefab.md)。
 
----
+## 配方总表
 
-## 配表
+表中统一把操作道具写在 `typeIn1`，被操作对象写在 `typeIn2`。
 
-`ItemMergeTable.xlsx` 第一张表，前三行是字段名、类型、说明，第 4 行起是配方。
+| id | typeIn1 | stateIn1 | typeIn2 | stateIn2 | op | 条件 | typeOut | stateOut | 说明 |
+|---:|---|---:|---|---:|---:|---|---|---:|---|
+| 1 | `GamePlay.Core.Item_Water` | 0 | `GamePlay.Core.Item_Tree` | 0 | 1 | 有阳光直接照射 | `GamePlay.Core.Item_Tree` | 1 | 小树苗浇水变大树 |
+| 2 | `GamePlay.Core.Item_Water` | 0 | `GamePlay.Core.Item_Spore` | 0 | 2 | 夜晚或没有阳光直射 | `GamePlay.Core.Item_Mushroom` | 0 | 孢子浇水变蘑菇 |
+| 3 | `GamePlay.Core.Item_Water` | 0 | `GamePlay.Core.Item_ManEater` | 0 | 3 | 无额外环境条件 | `GamePlay.Core.Item_ManEater` | 1 | 食人花种子浇水变食人花 |
+| 4 | `GamePlay.Core.Item_Water` | 0 | `GamePlay.Core.Item_FernSeed` | 0 | 4 | 无额外环境条件 | `GamePlay.Core.Item_Fern` | 0 | 蕨苗第一次浇水变一格高 |
+| 5 | `GamePlay.Core.Item_Water` | 0 | `GamePlay.Core.Item_Fern` | 0 | 5 | 无额外环境条件 | `GamePlay.Core.Item_Fern` | 1 | 一格高蕨类变两格高 |
+| 6 | `GamePlay.Core.Item_Water` | 0 | `GamePlay.Core.Item_Fern` | 1 | 6 | 无额外环境条件 | `GamePlay.Core.Item_Fern` | 2 | 两格高蕨类变三格高 |
+| 7 | `GamePlay.Core.Item_Water` | 0 | `GamePlay.Core.Item_Thorn` | 0 | 7 | 无额外环境条件 | `GamePlay.Core.Item_Thorn` | 1 | 失水荆棘浇水变正常荆棘 |
+| 8 | `GamePlay.Core.Item_Water` | 0 | `GamePlay.Core.Item_Thorn` | 1 | 8 | 无额外环境条件 | `GamePlay.Core.Item_Thorn` | 0 | 正常荆棘抽水变失水荆棘 |
+| 9 | `GamePlay.Core.Item_Shovel` | 0 | `GamePlay.Core.Item_Mushroom` | 0 | 9 | 场景中存在蘑菇 | `GamePlay.Core.Item_Spore` | 0 | 铲蘑菇获得孢子 |
+| 10 | `GamePlay.Core.Item_Shovel` | 0 | `GamePlay.Core.Item_Spore` | 0 | 10 | 场景中存在已放置孢子 | `GamePlay.Core.Item_Spore` | 0 | 铲孢子获得孢子 |
+| 11 | `GamePlay.Core.Item_Shovel` | 0 | `GamePlay.Core.Item_Fern` | 0 | 11 | 场景中存在一格高蕨类 | `GamePlay.Core.Item_FernSeed` | 0 | 铲一格高蕨类获得蕨苗 |
+| 12 | `GamePlay.Core.Item_Shovel` | 0 | `GamePlay.Core.Item_Fern` | 1 | 12 | 场景中存在两格高蕨类 | `GamePlay.Core.Item_FernSeed` | 0 | 铲两格高蕨类获得蕨苗 |
+| 13 | `GamePlay.Core.Item_Shovel` | 0 | `GamePlay.Core.Item_Fern` | 2 | 13 | 场景中存在三格高蕨类 | `GamePlay.Core.Item_FernSeed` | 0 | 铲三格高蕨类获得蕨苗 |
 
-| 字段 | 类型 | 填什么 |
+没有配方的物品：
+
+- `GamePlay.Core.Item_Stopwatch`：没有物品融合配方，直接作为昼夜切换入口。
+- `GamePlay.Core.Item_WindSeed`：直接放置生成风场，不经过 `MergeUtil`。
+- `GamePlay.Core.Item_Driftwood`：直接作为场景物使用，不经过 `MergeUtil`。
+
+## `op` 操作号
+
+| op | 含义 |
+|---:|---|
+| 1 | 有直射阳光时给树苗浇水 |
+| 2 | 没有直射阳光时给孢子浇水 |
+| 3 | 给食人花种子浇水 |
+| 4 | 给蕨苗第一次浇水 |
+| 5 | 给一格高蕨类浇水 |
+| 6 | 给两格高蕨类浇水 |
+| 7 | 给失水荆棘浇水 |
+| 8 | 从正常荆棘抽水 |
+| 9 | 铲蘑菇 |
+| 10 | 铲孢子 |
+| 11 | 铲一格高蕨类 |
+| 12 | 铲两格高蕨类 |
+| 13 | 铲三格高蕨类 |
+
+`op` 是运行时匹配字段。树和孢子的光照条件由调用方先判断：满足条件时传入对应的 `op`，不满足条件时不调用该配方。Excel 表本身不会读取昼夜或阳光状态。
+
+## Excel 字段
+
+| 字段 | 类型 | 作用 |
 |---|---|---|
-| `id` | int | 行号，不参与匹配 |
-| `typeIn1` | string | 物品 1 的类型名 |
-| `stateIn1` | int | 物品 1 的状态 |
-| `typeIn2` | string | 物品 2 的类型名 |
-| `stateIn2` | int | 物品 2 的状态 |
-| `op` | int | 操作号 |
-| `typeOut` | string | 结果物品的类型名 |
-| `stateOut` | int | 结果物品的状态 |
+| `id` | int | 配方行编号，不参与匹配 |
+| `typeIn1` | string | 第一个输入物品的完整类型名 |
+| `stateIn1` | int | 第一个输入物品状态 |
+| `typeIn2` | string | 第二个输入物品的完整类型名 |
+| `stateIn2` | int | 第二个输入物品状态 |
+| `op` | int | 操作号，参与匹配 |
+| `typeOut` | string | 输出物品的完整类型名 |
+| `stateOut` | int | 输出物品状态 |
 
-类型名写成类名，和 `item.GetType().ToString()` 一致。当前测试物品都在全局命名空间，所以填 `Item_Tree`、`Item_Water`、`Item_BigTree`，不要加命名空间，不要加 `.cs`。
+`id` 和 `op` 当前都按 1～13 编号，但两者职责不同：`id` 只是行号，`op` 才是 `MergeUtil` 的匹配条件。
 
-同一对物品只配一个方向。运行时会先按传入顺序查，查不到再把两个物品对调查一次。不要把 `Item_Water+Item_Tree` 和 `Item_Tree+Item_Water` 配成两条不同结果。
+类型名必须和 `item.GetType().ToString()` 一致，例如：
 
-同一组 `类型 + 状态 + 操作` 只保留一行。重复行导入时会被丢掉，控制台有 `Excel表导入数据错误`。
-
-改完保存，执行 `Tools > Excel > Export All (CS + Bytes)`，等编译结束再进 Play。只改单元格内容、没改列结构时，可以只跑 `Tools > Excel > Generate Bytes`。
-
-当前示例：
-
-| typeIn1 | stateIn1 | typeIn2 | stateIn2 | op | typeOut | stateOut |
-|---|---|---|---|---|---|---|
-| Item_Water | 1 | Item_Tree | 1 | 1 | Item_BigTree | 1 |
-| Item_Water | 2 | Item_Tree | 2 | 2 | Item_BigTree | 2 |
-
----
-
-## 物品类
-
-结果类型必须是 `Item` 的具体子类，并且有无参构造函数。`CopyItem` 要新建对象，并把 `State` 抄过去。
-
-```csharp
-public class Item_BigTree : Item
-{
-    public override int State { get; set; }
-
-    public override Item CopyItem()
-    {
-        var copy = new Item_BigTree();
-        copy.State = State;
-        return copy;
-    }
-}
+```text
+GamePlay.Core.Item_FernSeed
 ```
 
-物品类和 `MergeUtil` 放在同一个程序集里（现在都是 `Assembly-CSharp`）。`typeOut` 靠 `Type.GetType` 用类名创建，拆到别的程序集后短类名会创建失败，这一行配方不会进表。
-
-参与合成的实例，`State` 必须是表里写的那个数。`new Item_Water()` 若没有在构造函数里赋值，`State` 是 0，对不上表里的 1。
-
----
+同一组「输入类型 + 输入状态 + 操作号」只能有一行。输入顺序不影响命中，不要为同一条规则再反向配置一行。
 
 ## 调用
 
 ```csharp
 using GamePlay.Core;
 
-Item_BigTree result = MergeUtil.Merge<Item_BigTree>(water, tree, 1, () =>
-{
-    Debug.LogError("没有这条配方");
-});
+Item result = MergeUtil.Merge(water, tree, 1);
 if (result == null)
 {
     return;
 }
 
-// result.State 来自表的 stateOut
+// result 的类型和 State 来自 typeOut、stateOut。
 ```
 
-| 参数 | 含义 |
-|---|---|
-| `item1`、`item2` | 参与合成的两个物品，顺序可以和表里相反 |
-| `op` | 操作号，对应表的 `op` |
-| `OnMergeFailed` | 两个顺序都没有配方时调用，可省略 |
-| 返回值 | 新物品。类型是 `typeOut`，状态是 `stateOut`。没有配方，或你写的泛型不是结果类型时，返回 `null` |
+返回的是新 Item，不会修改传入的物品。没有配方时返回 `null`，并调用可选的失败回调。
 
-泛型要写成表里的结果类型。上面这条结果是 `Item_BigTree`，就要写 `Merge<Item_BigTree>`。写成 `Merge<Item_Tree>` 时配方可能已经命中，但转换失败，返回 `null`，并且不会走 `OnMergeFailed`。
+非泛型 `Merge` 直接返回配方指定的结果类型，当前场景交互入口使用这个重载。调用方已经知道结果类型时，也可以使用 `MergeUtil.Merge<Item_Tree>(water, tree, 1)`；如果泛型类型与结果不兼容，转换返回 `null`。
 
-返回的是复制体，改它的 `State` 不会改表里的原型，也不会改传入的 `water` / `tree`。
-
-第一次调用 `Merge` 或 `UpdateMergeTable` 时读 bytes。Play 中途重新导出了 bytes，要再调一次：
-
-```csharp
-MergeUtil.UpdateMergeTable();
-```
-
-加载成功后，控制台会打出每一条可用配方，例如 `Item_Water#1#Item_Tree#1#1 -> Item_BigTree#1`。某行没出现，就是类型名创建失败，或和已有行重复。
-
----
-
-## 匹配规则
-
-运行时用下面的字符串查表：
+首次调用 `Merge` 或手动调用 `MergeUtil.UpdateMergeTable()` 时会加载 `itemmergetable.bytes`。修改 Excel 后必须运行：
 
 ```text
-类型1#状态1#类型2#状态2#操作
+Tools > Excel > Export All (CS + Bytes)
 ```
 
-`Merge(water, tree, 1)` 在 `water.State == 1`、`tree.State == 1` 时，先查 `Item_Water#1#Item_Tree#1#1`，没有再查 `Item_Tree#1#Item_Water#1#1`。命中后 `CopyItem()`，并把原型上的 `stateOut` 带到副本。
-
-五个字段都参与比较。状态差 1，或 `op` 不同，就是另一条配方。没有命中就失败，不会按“最接近的一行”凑结果。
+只修改数据时也可以运行 `Tools > Excel > Generate Bytes`。不要手动修改生成的 C# 或 `.bytes` 文件。

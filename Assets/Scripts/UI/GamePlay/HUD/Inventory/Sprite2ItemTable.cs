@@ -10,8 +10,11 @@ public class Sprite2ItemTable : ScriptableObject
 {
     private Dictionary<string,Sprite> _table=new();
 
-    [ShowInInspector]private List<string> _typeNames;
-    [ShowInInspector]private List<Sprite> _sprites;  
+    [ShowInInspector, SerializeField]
+    private List<string> _typeNames = new();
+
+    [ShowInInspector, SerializeField]
+    private List<Sprite> _sprites = new();
     public Sprite2ItemTable()
     {
         
@@ -19,6 +22,12 @@ public class Sprite2ItemTable : ScriptableObject
     public void UpdateDictInfo()
     {
         _table=new();
+        if (_typeNames == null || _sprites == null)
+        {
+            ALog.LogError("类型名或 Sprite 列表不能为空!");
+            return;
+        }
+
         if (_typeNames.Count != _sprites.Count)
         {
             ALog.LogError("键值对数量不匹配!");

@@ -1,23 +1,35 @@
-using System.Runtime.CompilerServices;
 using AChen.Events;
-using AChen.Log;
+using GamePlay.Inventory;
 using UI.GamePlay.HUD;
-using UnityEditor;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UI;
+using System.Runtime.CompilerServices;
 
 public class SlotDragger : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
 {
     private GameObject _dragObj;
     private SlotController _controller;
     private ItemAttachRuler _ruler;
+    private InventoryModel _inventory;
+    private int _slotIndex = -1;
+
     void Awake()
     {
         _controller=GetComponent<SlotController>();
     }
+
     public void OnBeginDrag(PointerEventData eventData)
     {
+        if (_controller == null ||
+            !_controller.IsDisplaying ||
+            _controller.itemStack == null ||
+            _controller.itemStack.Item == null ||
+            _inventory == null ||
+            _slotIndex < 0)
+        {
+            return;
+        }
+
         _dragObj=ConstructDragObj(_controller.GetItemTemplate());
         EventCenter.Dispatch(GameEvent.SlotBeginDragged,_dragObj);
     }
@@ -29,12 +41,36 @@ public class SlotDragger : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
 
     public void OnEndDrag(PointerEventData eventData)
     {
+        if (_dragObj == null)
+        {
+            return;
+        }
+
+        InventoryDragContext context = new(
+            _inventory,
+            _slotIndex,
+            _controller.itemStack.Item,
+            _dragObj,
+            eventData.position
+        );
+
+        // 保留旧事件，兼容已有 UI 监听器；场景桥接器使用带完整数据的新事件。
         EventCenter.Dispatch(GameEvent.SlotEndDragged,_dragObj);
+        EventCenter.Dispatch(GameEvent.InventoryDragEnded, context);
+
+        Destroy(_dragObj);
+        _dragObj = null;
     }
 
     public void SetAttachRule(ItemAttachRuler ruler)
     {
         _ruler=ruler;
+    }
+
+    public void SetInventorySource(InventoryModel inventory, int slotIndex)
+    {
+        _inventory = inventory;
+        _slotIndex = slotIndex;
     }
 
     /// <summary>
@@ -53,6 +89,7 @@ public class SlotDragger : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
     GameObject ConstructDragObj(GameObject obj)
     {
         var ret=Instantiate(obj,transform);
+        ret.SetActive(true);
         return ret;
     }
     [MethodImpl(MethodImplOptions.AggressiveInlining)]

@@ -47,16 +47,27 @@ namespace GamePlay.Core
             
         }
 
-        public static T Merge<T>(Item item1,Item item2,int op,Action OnMergeFailed=null)where T:Item
+        /// <summary>
+        /// 根据两个输入物品和操作号查找配方，返回配方表中配置的结果物品。
+        /// 交互层不知道结果具体类型时使用这个重载。
+        /// </summary>
+        public static Item Merge(Item item1, Item item2, int op, Action OnMergeFailed = null)
         {
+            if (item1 == null || item2 == null)
+            {
+                OnMergeFailed?.Invoke();
+                ALog.LogError("[MergeUtil] 无法合成! 输入物品不能为 null");
+                return null;
+            }
+
             string cmp1=$"{item1.GetType()}#{item1.State}#{item2.GetType()}#{item2.State}#{op}";
             string cmp2=$"{item2.GetType()}#{item2.State}#{item1.GetType()}#{item1.State}#{op}";
             if (_canMergeTable.ContainsKey(cmp1))
             {
-                return _canMergeTable[cmp1].CopyItem() as T;
+                return _canMergeTable[cmp1].CopyItem();
             }else if (_canMergeTable.ContainsKey(cmp2))
             {
-                return _canMergeTable[cmp2].CopyItem() as T;
+                return _canMergeTable[cmp2].CopyItem();
             }
             else
             {
@@ -64,6 +75,15 @@ namespace GamePlay.Core
                 ALog.LogError("[MergeUtil] 无法合成! 配方:" + cmp1);
                 return null;
             }
+        }
+
+        /// <summary>
+        /// 泛型重载用于调用方已经知道结果类型的场景。结果类型仍以配方表为准。
+        /// </summary>
+        public static T Merge<T>(Item item1, Item item2, int op, Action OnMergeFailed = null)
+            where T : Item
+        {
+            return Merge(item1, item2, op, OnMergeFailed) as T;
         }
     }
 }

@@ -12,3 +12,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b09f35a8fe8f2304f905b5beec8bcf28, type: 3}
   m_Name: Sprite2ItemTable
   m_EditorClassIdentifier: Assembly-CSharp::Sprite2ItemTable
+  _typeNames:
+  - GamePlay.Core.Item_Water
+  - GamePlay.Core.Item_Tree
+  - GamePlay.Core.Item_Spore
+  - GamePlay.Core.Item_Mushroom
+  - GamePlay.Core.Item_ManEater
+  - GamePlay.Core.Item_FernSeed
+  - GamePlay.Core.Item_Fern
+  - GamePlay.Core.Item_Thorn
+  - GamePlay.Core.Item_Stopwatch
+  - GamePlay.Core.Item_Shovel
+  - GamePlay.Core.Item_WindSeed
+  - GamePlay.Core.Item_Driftwood
+  _sprites:
+  - {fileID: 21300000, guid: 2cc86ec859a0e474b95c877aab45169c, type: 3}
+  - {fileID: 21300000, guid: 2cc86ec859a0e474b95c877aab45169c, type: 3}
+  - {fileID: 21300000, guid: 2cc86ec859a0e474b95c877aab45169c, type: 3}
+  - {fileID: 21300000, guid: 2cc86ec859a0e474b95c877aab45169c, type: 3}
+  - {fileID: 21300000, guid: 2cc86ec859a0e474b95c877aab45169c, type: 3}
+  - {fileID: 21300000, guid: 2cc86ec859a0e474b95c877aab45169c, type: 3}
+  - {fileID: 21300000, guid: 2cc86ec859a0e474b95c877aab45169c, type: 3}
+  - {fileID: 21300000, guid: 2cc86ec859a0e474b95c877aab45169c, type: 3}
+  - {fileID: 21300000, guid: 2cc86ec859a0e474b95c877aab45169c, type: 3}
+  - {fileID: 21300000, guid: 2cc86ec859a0e474b95c877aab45169c, type: 3}
+  - {fileID: 21300000, guid: 2cc86ec859a0e474b95c877aab45169c, type: 3}
+  - {fileID: 21300000, guid: 2cc86ec859a0e474b95c877aab45169c, type: 3}

@@ -29,13 +29,19 @@ namespace UI.GamePlay.HUD
 
         public void BindModel(InventoryModel model)
         {
+            if (_model != null)
+            {
+                _model.OnInventoryUpdated-=UpdateView;
+            }
+
             _model=model;
             model.OnInventoryUpdated+=UpdateView;
             if(_autoInit)_viewer.InitSlots(_model.Size,_slot);
+            UpdateView(model);
         }
         public void SetInventory(InventoryModel model)
         {
-            _model=model;
+            BindModel(model);
         }
         void UpdateView(InventoryModel model)
         {

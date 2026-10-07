@@ -591,6 +591,8 @@ GameObject:
   m_Component:
   - component: {fileID: 1505077810}
   - component: {fileID: 1505077809}
+  - component: {fileID: 1505077811}
+  - component: {fileID: 1505077812}
   m_Layer: 0
   m_Name: SceneItemSystem
   m_TagString: Untagged
@@ -611,6 +613,37 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GamePlay.Scene.SceneItemSpawner
   _catalog: {fileID: 11400000, guid: 2aaeeb504cbeef549b25104fbe9cecbe, type: 2}
+--- !u!114 &1505077811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505077808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0f5e8d8c8a4c8ab07a5b9e4d62f391, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::GamePlay.Scene.SceneItemInteractionController
+  _spawner: {fileID: 1505077809}
+--- !u!114 &1505077812
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1505077808}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d4c5b6a7e8f4091a2b3c4d5e6f70819, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::GamePlay.Scene.SceneItemDragDropBridge
+  _interaction: {fileID: 1505077811}
+  _worldCamera: {fileID: 330585545}
+  _sceneParent: {fileID: 0}
+  _worldZ: 0
+  _targetRadius: 0.5
+  _defaultOperation: 1
 --- !u!4 &1505077810
 Transform:
   m_ObjectHideFlags: 0

@@ -23,6 +23,9 @@ namespace AChen.Events
         public static readonly EventId<GameObject> SlotBeginDragged=new($"Inventory.{nameof(SlotBeginDragged)}");
         /// <summary>玩家鼠标停止拖拽物品栏格子</summary>
         public static readonly EventId<GameObject> SlotEndDragged=new($"Inventory.{nameof(SlotEndDragged)}");
+        /// <summary>背包拖拽结束时的完整数据，供场景放置桥接器使用</summary>
+        public static readonly EventId<InventoryDragContext> InventoryDragEnded =
+            new($"Inventory.{nameof(InventoryDragEnded)}");
         /// <summary> 玩家按下交互键</summary>
         public static readonly EventId OnInteractKeyPressed=new("Input.InteractKeyPressed");
     
