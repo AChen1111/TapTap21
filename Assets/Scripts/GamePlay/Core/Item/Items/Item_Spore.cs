@@ -1,6 +1,9 @@
 using UnityEngine;
 namespace GamePlay.Core
 {
+    /// <summary>
+    /// 孢子的物品数据，不包含种植或转变为蘑菇的场景逻辑。
+    /// </summary>
     public class Item_Spore : Item
     {
 

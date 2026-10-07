@@ -1,6 +1,9 @@
 using UnityEngine;
 namespace GamePlay.Core
 {
+    /// <summary>
+    /// 荆棘的物品数据，通过 State 区分失水和正常状态，不包含收缩或碰撞变化逻辑。
+    /// </summary>
     public class Item_Thorn : Item
     {
         public override string Name => nameof(Item_Thorn);

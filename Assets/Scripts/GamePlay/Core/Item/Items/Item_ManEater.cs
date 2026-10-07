@@ -1,6 +1,9 @@
 using UnityEngine;
 namespace GamePlay.Core
 {
+    /// <summary>
+    /// 食人花的物品数据，通过 State 区分种子和长成状态，不包含生长或攻击逻辑。
+    /// </summary>
     public class Item_ManEater : Item
     {
         public override string Name => nameof(Item_ManEater);

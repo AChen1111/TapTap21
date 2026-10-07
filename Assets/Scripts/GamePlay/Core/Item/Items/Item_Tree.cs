@@ -1,6 +1,9 @@
 using UnityEngine;
 namespace GamePlay.Core
 {
+    /// <summary>
+    /// 树的物品数据，通过 State 区分小树苗和大树，不包含生长或场景表现逻辑。
+    /// </summary>
     public class Item_Tree : Item
     {
         public override string Name => nameof(Item_Tree);
