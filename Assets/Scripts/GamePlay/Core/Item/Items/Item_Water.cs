@@ -1,6 +1,9 @@
 using UnityEngine;
 namespace GamePlay.Core
 {
+    /// <summary>
+    /// 水元素的物品数据，不包含供水或抽水的场景交互逻辑。
+    /// </summary>
     public class Item_Water : Item
     {
 

@@ -1,6 +1,9 @@
 using UnityEngine;
 namespace GamePlay.Core
 {
+    /// <summary>
+    /// 昼夜切换道具（秒表）的物品数据，不包含时间切换逻辑。
+    /// </summary>
     public class Item_Stopwatch : Item
     {
 

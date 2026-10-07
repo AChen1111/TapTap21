@@ -1,6 +1,9 @@
 using UnityEngine;
 namespace GamePlay.Core
 {
+    /// <summary>
+    /// 蘑菇的物品数据，不包含光照响应或场景表现逻辑。
+    /// </summary>
     public class Item_Mushroom : Item
     {
 
