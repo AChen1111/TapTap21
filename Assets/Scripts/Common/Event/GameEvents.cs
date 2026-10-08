@@ -1,7 +1,9 @@
+using GamePlay.Core;
 using GamePlay.Gravity;
 using GamePlay.Inventory;
 using UI.GamePlay.HUD;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 namespace AChen.Events
 {
@@ -29,7 +31,9 @@ namespace AChen.Events
         /// <summary> 玩家按下交互键</summary>
         public static readonly EventId OnInteractKeyPressed=new("Input.InteractKeyPressed");
         /// <summary> 玩家在花篮停靠点按下按键召回花篮 </summary>
-        public static readonly EventId<Vector3> CallFlowerBasket=new($"GamePlay.Scene.{CallFlowerBasket}");
+        public static readonly EventId<Vector3> CallFlowerBasket=new($"GamePlay.Scene.{nameof(CallFlowerBasket)}");
+        /// <summary>当玩家使用铲子回收物品</summary>
+        public static readonly EventId<Item> OnRecycleItem=new($"GamePlay.Scene.{nameof(OnRecycleItem)}");
     
     }
 }

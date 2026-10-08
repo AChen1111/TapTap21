@@ -8,6 +8,7 @@ namespace GamePlay.Inventory
     public class InventoryModel
     {
         private List<ItemStack> _items = new();
+        public IReadOnlyList<ItemStack> Items=>_items;
         /// <summary>
         /// 物品栏的最大容纳数量
         /// </summary>
