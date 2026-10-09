@@ -35,6 +35,7 @@ namespace AChen.Events
         public static readonly EventId<Item> OnRecycleItem=new($"GamePlay.Scene.{nameof(OnRecycleItem)}");
         /// <summary>绑定相机的Follow对象 </summary>
         public static readonly EventId<Transform> BindCamera2Transform=new($"GamePlay.Camera.{nameof(BindCamera2Transform)}");
-    
+        /// <summary>设置相机的边界</summary>
+        public static readonly EventId<PolygonCollider2D> SetCameraBound=new($"GamePlay.Camera.{nameof(SetCameraBound)}");
     }
 }

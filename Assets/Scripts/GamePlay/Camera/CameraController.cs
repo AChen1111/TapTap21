@@ -15,15 +15,24 @@ public class CameraController : Singleton<CameraController>
     void OnEnable()
     {
         EventCenter.AddListener(GameEvent.BindCamera2Transform,Bind2Transform);
+        EventCenter.AddListener(GameEvent.SetCameraBound,SetBound);
     }
     void OnDisable()
     {
         EventCenter.RemoveListener(GameEvent.BindCamera2Transform,Bind2Transform);
+        EventCenter.RemoveListener(GameEvent.SetCameraBound,SetBound);
     }
     [Button]
     void DebugInvokeBindEvent(Transform tf)=>EventCenter.Dispatch(GameEvent.BindCamera2Transform,tf);
+    [Button]
+    void DebugInvokeSetBoundEvent(PolygonCollider2D coll)=>EventCenter.Dispatch(GameEvent.SetCameraBound,coll);
     void Bind2Transform(Transform tf)
     {
         _camera.Follow=tf;
+    }
+
+    void SetBound(PolygonCollider2D coll)
+    {
+        _camera.GetComponent<CinemachineConfiner2D>().BoundingShape2D=coll;
     }
 }
