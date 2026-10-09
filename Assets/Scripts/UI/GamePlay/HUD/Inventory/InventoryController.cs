@@ -1,10 +1,8 @@
 using System;
 using AChen.Events;
 using AChen.Log;
-using AChen.UI;
 using GamePlay.Core;
 using GamePlay.Inventory;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using UnityEngine;
 using UnityEngine.UI;
 namespace UI.GamePlay.HUD

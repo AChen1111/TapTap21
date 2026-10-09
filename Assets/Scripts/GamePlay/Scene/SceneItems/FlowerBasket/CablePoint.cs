@@ -3,6 +3,7 @@ using Sirenix.OdinInspector;
 using UnityEngine;
 using AChen.Events;
 using AChen.Log;
+namespace GamePlay{
 public class CablePoint : MonoBehaviour,ISceneItem,ICanInteract
 {
     
@@ -46,4 +47,5 @@ public class CablePoint : MonoBehaviour,ISceneItem,ICanInteract
         }
         
     }
+}
 }
