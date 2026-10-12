@@ -2,7 +2,6 @@ using UnityEngine;
 using Sirenix.OdinInspector;
 using TapTap21.SaveSystem.dyh;
 using Unity.VisualScripting;
-using NUnit.Framework;
 
 public class SaveTest : MonoBehaviour
 {
@@ -11,7 +10,11 @@ public class SaveTest : MonoBehaviour
     void Awake()
     {
         LoadResult<PlayerSaveData> res = SaveSystem.Load(SaveDefinitions.Player, SaveSlots.Slot0);
-        Assert.IsTrue(res.Success, "读取失败" + res.Message);
+        if (!res.Success)
+        {
+            Debug.LogError("读取失败" + res.Message);
+            return;
+        }
         playerSaveData = res.Data;
     }
 

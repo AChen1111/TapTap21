@@ -1,7 +1,7 @@
 using AChen.Log;
 using GamePlay.Gravity;
-using NUnit.Framework;
 using GamePlay.Player.Input;
+using GamePlay.Environment.Platform;
 using Unity.Mathematics;
 using UnityEngine;
 namespace GamePlay.Player.Movement
@@ -20,6 +20,7 @@ namespace GamePlay.Player.Movement
         private bool _preserveCarry;
         private bool _wasOnPlatform;
         private bool _leftPlatform;
+        private bool _dropRequested;
         void Awake()
         {
             _playerInput=GetComponent<PlayerInput>();
@@ -73,6 +74,7 @@ namespace GamePlay.Player.Movement
         }
         void Move(Vector2 moveDir)
         {
+            TryDropThrough(moveDir);
             bool onPlatform = TryGetPlatformVelocityX(out float platformX);
             float extraX;
             if (onPlatform)
@@ -100,6 +102,36 @@ namespace GamePlay.Player.Movement
         void OnTouchGround()
         {
             _jumpTimes=_movementDataSO.JumpTimes;
+        }
+
+        private void TryDropThrough(Vector2 moveDir)
+        {
+            if (moveDir.y > -0.5f)
+            {
+                _dropRequested = false;
+                return;
+            }
+            if (_dropRequested || _platformCollider == null) return;
+            OneWayPlatform2D platform = _platformCollider.GetComponentInParent<OneWayPlatform2D>();
+            if (platform == null) return;
+
+            _dropRequested = true;
+            platform.DropThrough(gameObject);
+            _platformCollider = null;
+            _wasOnPlatform = false;
+            _preserveCarry = false;
+            _jumpTimes = Mathf.Max(0, _movementDataSO.JumpTimes - 1);
+        }
+        /// <summary>重生时清理旧平台惯性并恢复跳跃次数。</summary>
+        public void ResetAfterRespawn()
+        {
+            _platformCollider = null;
+            _carriedPlatformVelocityX = 0f;
+            _lastPlatformVelocityX = 0f;
+            _preserveCarry = false;
+            _wasOnPlatform = false;
+            _leftPlatform = false;
+            if (_movementDataSO != null) _jumpTimes = _movementDataSO.JumpTimes;
         }
         void OnLeaveGround()
         {
@@ -144,12 +176,18 @@ namespace GamePlay.Player.Movement
 
         bool IsFootOnGround(Collider2D other)
         {
-            return _foot != null && other.CompareTag("Ground") && _foot.IsTouching(other);
+            if (_foot == null || !other.CompareTag("Ground") || !_foot.IsTouching(other)) return false;
+            OneWayPlatform2D platform = other.GetComponentInParent<OneWayPlatform2D>();
+            if (platform == null) return true;
+            if (_rb2d.linearVelocity.y > 0.05f) return false;
+            return _foot.bounds.min.y >= other.bounds.max.y - 0.08f;
         }
 
         bool IsFootOnPlatform(Collider2D other)
         {
             if (_foot == null || other == null || other.isTrigger) return false;
+            OneWayPlatform2D oneWayPlatform = other.GetComponentInParent<OneWayPlatform2D>();
+            if (oneWayPlatform != null) return _foot.IsTouching(other);
             Rigidbody2D body=other.attachedRigidbody;
             if (body == null || body == _rb2d) return false;
             return _foot.IsTouching(other);
@@ -176,6 +214,7 @@ namespace GamePlay.Player.Movement
             if (_foot == null || other == null || other.isTrigger) return;
             if (!_foot.IsTouching(other)) return;
             _leftPlatform = false;
+            _dropRequested = false;
             _preserveCarry = false;
             _carriedPlatformVelocityX = 0f;
         }

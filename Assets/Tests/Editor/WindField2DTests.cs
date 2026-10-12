@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System.Collections.Generic;
 using GamePlay.Wind;
 using NUnit.Framework;
@@ -180,3 +181,4 @@ namespace GamePlay.Tests.Wind
         }
     }
 }
+#endif

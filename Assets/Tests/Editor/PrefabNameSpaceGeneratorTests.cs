@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using AChen.Prefabs.Editor;
 using NUnit.Framework;
 
@@ -44,3 +45,4 @@ namespace AChen.Tests.Prefabs
         }
     }
 }
+#endif

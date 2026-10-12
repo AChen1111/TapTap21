@@ -21,7 +21,7 @@ namespace Ferr.Example {
 		void Update () {
 		
 			if (body.gravityScale > 0) {
-				visual.transform.rotation = Quaternion.FromToRotation(Vector3.right, body.velocity);
+				visual.transform.rotation = Quaternion.FromToRotation(Vector3.right, body.linearVelocity);
 				visual.transform.eulerAngles -= new Vector3(0, 0, 90);
 			}
 		
@@ -45,7 +45,7 @@ namespace Ferr.Example {
 		void OnCollisionEnter2D(Collision2D collision) {
 			animator.SetTrigger("Land");
 			body.gravityScale = 0;
-			body.velocity     = Vector3.zero;
+			body.linearVelocity     = Vector3.zero;
 			body.Sleep();
 		
 			visual.transform.eulerAngles = new Vector3(0,0, 360 - Ferr.PathUtil.ClockwiseAngle(Vector2.right, collision.contacts[0].normal) + 270);

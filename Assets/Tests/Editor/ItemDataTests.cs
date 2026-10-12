@@ -1,3 +1,4 @@
+#if UNITY_EDITOR
 using System;
 using GamePlay.Core;
 using NUnit.Framework;
@@ -43,3 +44,4 @@ namespace GamePlay.Tests.Items
         }
     }
 }
+#endif

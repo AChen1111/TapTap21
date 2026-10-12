@@ -16,6 +16,8 @@ public class UISettings : ScriptableObject
     [SerializeField] private List<GameObject> screensToRegister = null;
     [Tooltip("实例化后是否自动把仍处于激活状态的界面关掉")]
     [SerializeField] private bool deactivateScreenGOs = true;
+    [Tooltip("注册完成后自动显示的 HUD Panel Id")]
+    [SerializeField] private List<string> panelsToShow = new List<string>();
 
     /// <summary>创建 UI 时使用的 UIFrame Prefab。</summary>
     public UIFrame TemplateUIPrefab => templateUIPrefab;
@@ -49,24 +51,28 @@ public class UISettings : ScriptableObject
             }
         }
 
+        if (instanceAndRegisterScreens)
+        {
+            foreach (string panelId in panelsToShow)
+            {
+                newUI.ShowPanel(panelId);
+            }
+        }
         return newUI;
     }
     
     private void OnValidate() {
-        List<GameObject> objectsToRemove = new List<GameObject>();
-        for(int i = 0; i < screensToRegister.Count; i++) {
-            var screenCtl = screensToRegister[i].GetComponent<IUIScreenController>();
-            if (screenCtl == null) {
-                objectsToRemove.Add(screensToRegister[i]);
+        if (screensToRegister == null) screensToRegister = new List<GameObject>();
+        for (int i = screensToRegister.Count - 1; i >= 0; i--)
+        {
+            GameObject obj = screensToRegister[i];
+            if (obj != null && obj.GetComponent<IUIScreenController>() != null)
+            {
+                continue;
             }
-        }
 
-        if (objectsToRemove.Count > 0) {
-            Debug.LogError("[UISettings] Some GameObjects that were added to the Screen Prefab List didn't have ScreenControllers attached to them! Removing.");
-            foreach (var obj in objectsToRemove) {
-                Debug.LogError("[UISettings] Removed " + obj.name + " from " + name + " as it has no Screen Controller attached!");
-                screensToRegister.Remove(obj);
-            }
+            Debug.LogError("[UISettings] Removed an invalid screen prefab from " + name + ".");
+            screensToRegister.RemoveAt(i);
         }
     }        
 }

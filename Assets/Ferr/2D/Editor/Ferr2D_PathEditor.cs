@@ -439,7 +439,7 @@ public class Ferr2D_PathEditor : Editor {
 		if (Event.current.control) cap = isSelected ? (CapFunction)CapDotSelectedSnap : (CapFunction)CapDotSnap;
 		else                       cap = isSelected ? (CapFunction)CapDotSelected     : (CapFunction)CapDot;
 		
-		Vector3 result = Handles.FreeMoveHandle(pos, camTransform.rotation, HandleScale(pos) * Ferr2D_Visual.HandleSize, snap, cap);
+		var fmh_442_48_639274146881147976 = camTransform.rotation; Vector3 result = Handles.FreeMoveHandle(pos, HandleScale(pos) * Ferr2D_Visual.HandleSize, snap, cap);
 		
 		if (result != pos) {
 			EnsureVertSelected(i, ref isSelected);
@@ -487,7 +487,7 @@ public class Ferr2D_PathEditor : Editor {
 			if (IsVisible(displayPos)) {
 				cap = Event.current.alt ? (CapFunction)CapDotReset : (CapFunction)CapDotScale;
 			
-				Vector3 scaleMove = Handles.FreeMoveHandle(displayPos, camTransform.rotation, scale, Vector3.zero, cap);
+				var fmh_490_60_639274146881154943 = camTransform.rotation; Vector3 scaleMove = Handles.FreeMoveHandle(displayPos, scale, Vector3.zero, cap);
 				float   scaleAmt  = Vector3.Distance(displayPos, scaleMove);
 				if (Mathf.Abs(scaleAmt) > 0.01f ) {
 					EnsureVertSelected(i, ref isSelected);
