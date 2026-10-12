@@ -285,7 +285,7 @@ public partial class Ferr2DT_PathTerrainEditor : Editor {
 				Vector2 screenNormal = HandleUtility.WorldToGUIPoint(pointWorld + pointWorldNormal) - HandleUtility.WorldToGUIPoint(pointWorld);
 				screenNormal.Normalize();
 
-				Vector3 move = Handles.FreeMoveHandle(scalePos, Quaternion.identity, pointSize*sizeSmallHandle, Vector3.zero, Ferr2DT_Caps.GetScaleCap(screenNormal));
+				var fmh_288_53_639274215357906103 = Quaternion.identity; Vector3 move = Handles.FreeMoveHandle(scalePos, pointSize*sizeSmallHandle, Vector3.zero, Ferr2DT_Caps.GetScaleCap(screenNormal));
 				if (move != scalePos) {
 					move = PathUtil.GetClosetPointOnLine(scaleStart, scaleStart+pointWorldNormal*3, move, true);
 					float finalScale = 0.5f+(scaleStart - move).magnitude/3f;

@@ -1,6 +1,7 @@
 using GamePlay.Core;
 using GamePlay.Gravity;
 using GamePlay.Inventory;
+using Mono.Cecil;
 using UI.GamePlay.HUD;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -37,5 +38,9 @@ namespace AChen.Events
         public static readonly EventId<Transform> BindCamera2Transform=new($"GamePlay.Camera.{nameof(BindCamera2Transform)}");
         /// <summary>设置相机的边界</summary>
         public static readonly EventId<PolygonCollider2D> SetCameraBound=new($"GamePlay.Camera.{nameof(SetCameraBound)}");
+        /// <summary> 游戏开始 </summary>
+        public static readonly EventId GameStarted=new("Game.Started");
+        /// <summary>当开始游戏按钮被点击</summary>
+        public static readonly EventId OnGameStartedBtnClicked=new($"UI.{nameof(OnGameStartedBtnClicked)}");
     }
 }

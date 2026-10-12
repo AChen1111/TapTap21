@@ -370,8 +370,7 @@ namespace Ferr {
 				cap = aVisuals.capVertexTypes[(int)aPathRaw.GetControls(aIndex).type];
 
 			Vector3 v  = aTransform.MultiplyPoint3x4(Plane(aPathRaw[aIndex], aPlane));
-			Vector3 nV = Handles.FreeMoveHandle(v,
-				SceneView.lastActiveSceneView.camera.transform.rotation,
+			var fmh_374_5_639274215362136700 = SceneView.lastActiveSceneView.camera.transform.rotation; Vector3 nV = Handles.FreeMoveHandle(v,
 				HandleUtility.GetHandleSize(v) * aVisuals.sizeVertex,
 				Vector3.zero,
 				cap);
@@ -466,8 +465,7 @@ namespace Ferr {
 					Vector3 normal = Vector2.Lerp(end1.xy()-aPathRaw[aIndex], end2.xy()-aPathRaw[aIndex],0.5f).normalized;
 				
 					Vector3 v = aTransform.MultiplyVector(Plane(normal*(ctrl.radius + radiusOffset), aPlane)) + at;
-					Vector3 nV = Handles.FreeMoveHandle(v,
-						SceneView.lastActiveSceneView.camera.transform.rotation,
+					var fmh_470_7_639274215362144659 = SceneView.lastActiveSceneView.camera.transform.rotation; Vector3 nV = Handles.FreeMoveHandle(v,
 						size * aVisuals.sizeControlHandle,
 						Vector3.zero,
 						aVisuals.capControlHandle);
@@ -492,8 +490,7 @@ namespace Ferr {
 			} else {
 				Vector2 newPos;
 				Vector3 v = aTransform.MultiplyVector(Plane(ctrl.controlPrev, aPlane)) + at;
-				Vector3 nV = Handles.FreeMoveHandle(v,
-					SceneView.lastActiveSceneView.camera.transform.rotation,
+				var fmh_496_6_639274215362147921 = SceneView.lastActiveSceneView.camera.transform.rotation; Vector3 nV = Handles.FreeMoveHandle(v,
 					HandleUtility.GetHandleSize(v) * aVisuals.sizeControlHandle,
 					Vector3.zero,
 					aVisuals.capControlHandle);
@@ -521,8 +518,7 @@ namespace Ferr {
 				else
 					v =  aTransform.MultiplyVector(Plane(ctrl.controlNext, aPlane)) + at;
 
-				nV = Handles.FreeMoveHandle(v,
-					SceneView.lastActiveSceneView.camera.transform.rotation,
+				var fmh_525_6_639274215362150562 = SceneView.lastActiveSceneView.camera.transform.rotation; nV = Handles.FreeMoveHandle(v,
 					HandleUtility.GetHandleSize(v) * aVisuals.sizeControlHandle,
 					Vector3.zero,
 					aVisuals.capControlHandle);
