@@ -7,6 +7,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.AI;
 using ZZ.ZTween;
+namespace GamePlay
+{
 public class FlowerBasket : MonoBehaviour, ISceneItem
 {
     enum MoveState
@@ -45,4 +47,5 @@ public class FlowerBasket : MonoBehaviour, ISceneItem
         ZTweenUtility.Kill(_nowTween);
         _nowTween=transform.ZMoveTo(pos,timeCalc(pos),ease:DG.Tweening.Ease.InOutQuad);
     }
+}
 }
