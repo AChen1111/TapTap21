@@ -1,4 +1,6 @@
 using UnityEngine;
+using FXSystem;
+
 
 namespace GamePlay.Environment.Water
 {
@@ -6,13 +8,22 @@ namespace GamePlay.Environment.Water
     {
         [SerializeField] private LayerMask _waterMask;
 
-        private EdgeCollider2D _edgeCollider;
+        //private EdgeCollider2D _edgeCollider;
         private InteractiveWater _water;
 
         private void Awake()
         {
             _water = GetComponent<InteractiveWater>();
-            _edgeCollider = GetComponent<EdgeCollider2D>();
+            //_edgeCollider = GetComponent<EdgeCollider2D>();
+        }
+
+        private Vector2 GetCollisionPoint(Collider2D other)
+        {
+            if (!TryGetComponent<Collider2D>(out Collider2D waterCol))
+                return Vector2.zero;
+
+            ColliderDistance2D dist = waterCol.Distance(other);
+            return dist.pointA;
         }
 
         private void OnTriggerEnter2D(Collider2D collision)
@@ -25,10 +36,13 @@ namespace GamePlay.Environment.Water
                     Vector2 localPos = gameObject.transform.localPosition;
                     Vector2 hitObjectPos = collision.transform.position;
                     Bounds hitObjectBounds = collision.bounds;
+                    Collider2D waterCol = GetComponent<Collider2D>();
+                    ColliderDistance2D dist = waterCol.Distance(collision);
+                    Vector2 splashPos = dist.pointA;
 
-                    if (collision.transform.position.y >= _edgeCollider.points[1].y + _edgeCollider.offset.y + localPos.y)
+                    if (collision.transform.position.y >= _water.Vertices[1].y + localPos.y)
                     {
-
+                        FX.Play("water_splash", splashPos);//GetCollisionPoint(collision));
                     }
                     else
                     {

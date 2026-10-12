@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f91a14eb3173e2a47a232cd18a38f812, type: 3}
+  m_Name: FX_WaterSplash
+  m_EditorClassIdentifier: Assembly-CSharp::FXSystem.FXDefinition
+  Id: water_splash
+  Prefab: {fileID: 6241868250402949397, guid: 9ea38915eafa1e948a3e5fd907f9c865, type: 3}
+  Space: 0
+  UIScale: 1
+  OverrideCanvasSorting: 1
+  Looping: 0
+  ExtraLifetime: 0
+  PrewarmCount: 7
+  MaxActive: 24
+  Overflow: 0
+  SortingLayer: Default
+  SortingOrder: 0
+  RecycleOnSceneChange: 1

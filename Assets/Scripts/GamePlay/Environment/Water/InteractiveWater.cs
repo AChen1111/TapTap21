@@ -18,7 +18,7 @@ using TMPro;
 
 namespace GamePlay.Environment.Water
 {
-    [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer), typeof(EdgeCollider2D))]
+    [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
     [RequireComponent(typeof(WaterTriggerHandler), typeof(BoxCollider2D), typeof(BuoyancyEffector2D))]
     [RequireComponent(typeof(SortingGroup), typeof(WaterVisualController))]
     public class InteractiveWater : MonoBehaviour
@@ -60,9 +60,10 @@ namespace GamePlay.Environment.Water
         private Vector3[] _vertices;
         private int[] _topVerticesIndex;
 
-        private EdgeCollider2D _edgeCollider;
+        //private EdgeCollider2D _edgeCollider;
         private BoxCollider2D _boxCollider;
 
+        public Vector3[] Vertices { get => _vertices; }
 
         float[] _velocities;
         float[] _accelerations;
@@ -85,8 +86,8 @@ namespace GamePlay.Environment.Water
         private void Reset()
         {
             _boxCollider = GetComponent<BoxCollider2D>();
-            _edgeCollider = GetComponent<EdgeCollider2D>();
-            _edgeCollider.isTrigger = true;
+            //_edgeCollider = GetComponent<EdgeCollider2D>();
+            //_edgeCollider.isTrigger = true;
         }
 
         private void OnDestroy()
@@ -221,7 +222,7 @@ namespace GamePlay.Environment.Water
 
         private void ResetCollider()
         {
-            _edgeCollider = GetComponent<EdgeCollider2D>();
+            //_edgeCollider = GetComponent<EdgeCollider2D>();
 
             Vector2[] newPoints = new Vector2[2];
 
@@ -231,8 +232,8 @@ namespace GamePlay.Environment.Water
             Vector2 right = new Vector2(_vertices[_topVerticesIndex[_topVerticesIndex.Length - 1]].x, _vertices[_topVerticesIndex[_topVerticesIndex.Length - 1]].y);
             newPoints[1] = right;
 
-            _edgeCollider.offset = Vector2.zero;
-            _edgeCollider.points = newPoints;
+            //_edgeCollider.offset = Vector2.zero;
+            //_edgeCollider.points = newPoints;
 
             _boxCollider = GetComponent<BoxCollider2D>();
             _boxCollider.size = new Vector2(width, height);
