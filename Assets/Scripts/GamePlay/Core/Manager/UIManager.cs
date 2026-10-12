@@ -30,6 +30,6 @@ public class UIManager : MonoBehaviour
     private void OnGameStarted()
     {
         menu=Instantiate(_menuPrefab,_menuUI.transform);
-        
     }
+    
 }

@@ -42,5 +42,7 @@ namespace AChen.Events
         public static readonly EventId GameStarted=new("Game.Started");
         /// <summary>当开始游戏按钮被点击</summary>
         public static readonly EventId OnGameStartedBtnClicked=new($"UI.{nameof(OnGameStartedBtnClicked)}");
+        /// <summary>当退出游戏按钮被点击</summary>
+        public static readonly EventId OnGameExitBtnClicked=new($"UI.{nameof(OnGameExitBtnClicked)}");
     }
 }
