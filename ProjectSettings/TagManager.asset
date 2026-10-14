@@ -46,6 +46,15 @@ TagManager:
   - name: Water
     uniqueID: 56278125
     locked: 0
+  - name: Ground
+    uniqueID: 1974274229
+    locked: 0
+  - name: Item
+    uniqueID: 3379421029
+    locked: 0
+  - name: Player
+    uniqueID: 1337178427
+    locked: 0
   m_RenderingLayers:
   - Default
   - Light Layer 1
