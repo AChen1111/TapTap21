@@ -26,12 +26,7 @@ namespace Effects
         [Tooltip("横轴 0 到 1 对应该效果的时长，纵轴写入材质的 _Intensity。")]
         public AnimationCurve intensity = AnimationCurve.Linear(0f, 1f, 1f, 1f);
 
-        [Header("Outline")]
-        public LayerMask layerMask = ~0;
-        public Color color = Color.yellow;
-
-        [Range(1f, 16f)]
-        public float width = 3f;
+        
     }
 
 }

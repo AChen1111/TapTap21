@@ -122,7 +122,6 @@ void OnPlayerHurt()
 void ShowDanger()
 {
     screen.Play(vignette);       // 一直留到 Stop
-    screen.Play(enemyOutline);
 }
 ```
 
@@ -132,13 +131,11 @@ void ShowDanger()
 | --- | --- | --- |
 | `Profiles/ScreenHitFlash.asset` | Blit | 约 0.15 秒全屏闪白 |
 | `Profiles/Vignette.asset` | Blit | 暗角，一直播放 |
-| `Profiles/EnemyOutline.asset` | Outline | 描边，一直播放 |
 
 新效果后续逐步添加。
 
 自制：菜单 **Effects / Screen Effect**。
 
 - **Blit**：指定一张全屏材质。播放器把 `intensity` 曲线写进材质的 `_Intensity`。闪白用 `Materials/ScreenFlash.mat`，暗角用 `Materials/ScreenVignette.mat`。
-- **Outline**：填 Layer、颜色、宽度。它仍走原来的遮罩描边，不会和暗角挤在同一次绘制里。
 
 摄像机上还没有 `ScreenEffectPlayer` 时，场景里原来的描边保持原样。加上这个组件之后，描边只在 `Play` 了描边配置时出现。

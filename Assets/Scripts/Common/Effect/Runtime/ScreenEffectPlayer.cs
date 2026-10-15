@@ -106,21 +106,6 @@ namespace Effects
             }
         }
 
-        public bool TryGetOutline(out OutlineRequest request)
-        {
-            for (int i = _playing.Count - 1; i >= 0; i--)
-            {
-                ScreenEffectProfile profile = _playing[i].profile;
-                if (profile == null || profile.kind != ScreenEffectKind.Outline)
-                    continue;
-
-                request = new OutlineRequest(profile.layerMask, profile.color, profile.width);
-                return true;
-            }
-
-            request = default;
-            return false;
-        }
 
         public void CopyBlitMaterials(List<Material> destination)
         {
