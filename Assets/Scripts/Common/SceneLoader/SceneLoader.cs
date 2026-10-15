@@ -22,6 +22,7 @@ public static class SceneLoader
 
     public static void RegisterPersistentScene(string sceneName){
         RegisterPersistentSceneAsync(sceneName).Forget();
+        ALog.Log("注册 Persistent Scene 成功: "+sceneName);
     }
 
     public static void UnregisterPersistentScene(string sceneName){

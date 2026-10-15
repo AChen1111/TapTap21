@@ -13,5 +13,8 @@ MonoBehaviour:
   m_Name: Inventory
   m_EditorClassIdentifier: Assembly-CSharp::AChen.UI.UISettings
   templateUIPrefab: {fileID: 4263210699756758641, guid: ad3e6bf7765439c49a876242441ba00e, type: 3}
-  screensToRegister: []
+  screensToRegister:
+  - {fileID: 7522262139139631646, guid: 8b7c6d5e4f3a2918171615141312111a, type: 3}
   deactivateScreenGOs: 1
+  panelsToShow:
+  - HealthBar

@@ -13,8 +13,9 @@
   <Project Path="UnityEngine.UI.csproj" />
   <Project Path="SingularityGroup.HotReload.Editor.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.2D.Runtime.csproj" />
-  <Project Path="Unity.Collections.csproj" />
+  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="Unity.Pipeline.IlInterpreter.csproj" />
+  <Project Path="Unity.Collections.csproj" />
   <Project Path="Unity.Pipeline.csproj" />
   <Project Path="Unity.VisualScripting.Core.Editor.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.Editor.csproj" />
@@ -31,7 +32,6 @@
   <Project Path="PPv2URPConverters.csproj" />
   <Project Path="UniTask.csproj" />
   <Project Path="Unity.Searcher.Editor.csproj" />
-  <Project Path="Assembly-CSharp.csproj" />
   <Project Path="UnityEditor.TestRunner.csproj" />
   <Project Path="Unity.VisualScripting.Core.csproj" />
   <Project Path="Unity.RenderPipelines.Universal.Runtime.csproj" />

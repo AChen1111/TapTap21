@@ -1,6 +1,7 @@
 using GamePlay.Core;
 using GamePlay.Gravity;
 using GamePlay.Inventory;
+using Mono.Cecil;
 using UI.GamePlay.HUD;
 using UnityEngine;
 using UnityEngine.UIElements;
@@ -26,14 +27,22 @@ namespace AChen.Events
         /// <summary>玩家鼠标停止拖拽物品栏格子</summary>
         public static readonly EventId<GameObject> SlotEndDragged=new($"Inventory.{nameof(SlotEndDragged)}");
         /// <summary>背包拖拽结束时的完整数据，供场景放置桥接器使用</summary>
-        public static readonly EventId<InventoryDragContext> InventoryDragEnded =
-            new($"Inventory.{nameof(InventoryDragEnded)}");
+        public static readonly EventId<InventoryDragContext> InventoryDragEnded =new($"Inventory.{nameof(InventoryDragEnded)}");
         /// <summary> 玩家按下交互键</summary>
         public static readonly EventId OnInteractKeyPressed=new("Input.InteractKeyPressed");
         /// <summary> 玩家在花篮停靠点按下按键召回花篮 </summary>
         public static readonly EventId<Vector3> CallFlowerBasket=new($"GamePlay.Scene.{nameof(CallFlowerBasket)}");
         /// <summary>当玩家使用铲子回收物品</summary>
         public static readonly EventId<Item> OnRecycleItem=new($"GamePlay.Scene.{nameof(OnRecycleItem)}");
-    
+        /// <summary>绑定相机的Follow对象 </summary>
+        public static readonly EventId<Transform> BindCamera2Transform=new($"GamePlay.Camera.{nameof(BindCamera2Transform)}");
+        /// <summary>设置相机的边界</summary>
+        public static readonly EventId<PolygonCollider2D> SetCameraBound=new($"GamePlay.Camera.{nameof(SetCameraBound)}");
+        /// <summary> 游戏开始 </summary>
+        public static readonly EventId GameStarted=new("Game.Started");
+        /// <summary>当开始游戏按钮被点击</summary>
+        public static readonly EventId OnGameStartedBtnClicked=new($"UI.{nameof(OnGameStartedBtnClicked)}");
+        /// <summary>当退出游戏按钮被点击</summary>
+        public static readonly EventId OnGameExitBtnClicked=new($"UI.{nameof(OnGameExitBtnClicked)}");
     }
 }

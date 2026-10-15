@@ -28,6 +28,8 @@ namespace TapTap21.SaveSystem.dyh
     {
         public int level;
         public int coins;
+        public int health = 3;
+        public bool respawnPending;
     }
 
     public enum InventoryItemKind { None, Consumable, Equipment }
