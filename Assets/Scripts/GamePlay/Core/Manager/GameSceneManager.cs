@@ -29,6 +29,6 @@ public class GameSceneManager : MonoBehaviour
     }
     void OnGameStartBtnClicked()
     {
-        SceneLoader.LoadScene(_gameSceneName);
+        SceneLoader.LoadScene(_gameSceneName,onSceneLoadCompleteCallback:()=>EventCenter.Dispatch(GameEvent.OnGameSceneLoaded));
     }
 }
