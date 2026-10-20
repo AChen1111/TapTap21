@@ -6,20 +6,32 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/GameScene.unity
-    guid: 99c9720ab356a0642a771bea13969a05
-  - enabled: 1
-    path: Assets/Scenes/ZTween/ZTweenShowDemo.unity
-    guid: ccaece14775fd8a458f34530da31e8a9
-  - enabled: 1
-    path: Assets/Scenes/TestScene.unity
-    guid: 033a6ec4ad8036e478936617c1ce227a
+    path: Assets/Scenes/Menu.unity
+    guid: d532180dee6c2b4409e2a34452f95ee0
   - enabled: 1
     path: Assets/Scenes/PersistentScene.unity
     guid: 37a0c7f4a9a810645b16edf77f1d3401
   - enabled: 1
+    path: Assets/Scenes/Scene_1.unity
+    guid: 99c9720ab356a0642a771bea13969a05
+  - enabled: 0
+    path: Assets/Scenes/ZTween/ZTweenShowDemo.unity
+    guid: ccaece14775fd8a458f34530da31e8a9
+  - enabled: 0
+    path: Assets/Scenes/TestScene.unity
+    guid: 033a6ec4ad8036e478936617c1ce227a
+  - enabled: 0
     path: Assets/Scenes/Test2.unity
     guid: eecdcf219c68ac145a7ccce2ccbec75d
+  - enabled: 1
+    path: Assets/Scenes/Scene_2.unity
+    guid: aee6bd03a52a63f44be5bac41468b988
+  - enabled: 1
+    path: Assets/Scenes/Scene_3.unity
+    guid: efb1cf9b059af7c4bba9d73c7175fbb6
+  - enabled: 1
+    path: Assets/Scenes/Scene_4.unity
+    guid: 65fd132e06e1eed45b7116db2a16dbb6
   m_configObjects:
     com.unity.input.settings.actions: {fileID: -944628639613478452, guid: 052faaac586de48259a63d0c4782560b, type: 3}
   m_UseUCBPForAssetBundles: 0

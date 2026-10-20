@@ -12,6 +12,8 @@ public static class SceneLoader
 
     static readonly string _selfName="[SceneLoader]";
     static readonly HashSet<string> s_PersistentScenes=new HashSet<string>();
+    [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+    static void ResetPersistentScenes() => s_PersistentScenes.Clear();
 
     public static void LoadScene(string sceneName,LoadSceneMode mode=LoadSceneMode.Single,Action onSceneLoadCompleteCallback=null){
         LoadSceneAsync(sceneName,mode,onSceneLoadCompleteCallback).Forget();

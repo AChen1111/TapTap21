@@ -89,6 +89,7 @@ namespace GamePlay.Player.Input
         }
         void OnJump(InputAction.CallbackContext context)
         {
+            if (!isActiveAndEnabled || Time.timeScale == 0f) return;
             if(!_inputState.Has(EInputState.Jump))return;
             OnInputJump?.Invoke();
         }
@@ -100,6 +101,7 @@ namespace GamePlay.Player.Input
         }
         private void OnInteract(InputAction.CallbackContext context)
         {
+            if (!isActiveAndEnabled || Time.timeScale == 0f) return;
             EventCenter.Dispatch(GameEvent.OnInteractKeyPressed);
         }
     }

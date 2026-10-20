@@ -28,7 +28,11 @@ public class GameManager : MonoBehaviour
 
     void OnGameExit()
     {
-        Application.Quit();
         ALog.Log("游戏退出!");
+#if UNITY_EDITOR
+        UnityEditor.EditorApplication.isPlaying = false;
+#else
+        Application.Quit();
+#endif
     }
 }

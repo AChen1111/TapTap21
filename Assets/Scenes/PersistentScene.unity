@@ -316,6 +316,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::UIManager
   _menuPrefab: {fileID: 17841366738934649, guid: f198fd46c97261048b2216bac4978d8f, type: 3}
   _gamePlayUIPrefab: {fileID: 7522262139139631646, guid: 8b7c6d5e4f3a2918171615141312111a, type: 3}
+  _gamePlaySettings: {fileID: 11400000, guid: 3a6b9518eca42a34c868237d6c626851, type: 2}
 --- !u!4 &1089336778
 Transform:
   m_ObjectHideFlags: 0
@@ -470,6 +471,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5da95515846f473469887f496eaab437, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GameSceneManager
+  _playerPrefab: {fileID: 3323557252224284591, guid: efa56e27fc0e67b4d9edf15558c72e33, type: 3}
+  _firstMap: Scene_1
 --- !u!4 &1553686744
 Transform:
   m_ObjectHideFlags: 0

@@ -15,6 +15,8 @@ namespace UI.Manager
         [SerializeField]private GameObject _gamePlayUIPrefab;
         private GameObject _gameplayUI;
         private GameObject _menu;
+        [SerializeField] private UISettings _gamePlaySettings;
+        private global::GamePlay.Inventory.InventoryModel _inventory;
         void Awake()
         {
             _menuUI=GameObject.Find("menuUI");
@@ -43,8 +45,32 @@ namespace UI.Manager
         {
             _menuUI.SetActive(false);
             Mode=EUIMode.Game;
+            if (_gameplayUI != null) return;
+            if (_gamePlaySettings != null)
+            {
+                _gameplayUI = _gamePlaySettings.CreateUIInstance().gameObject;
+                SceneManager.MoveGameObjectToScene(_gameplayUI, gameObject.scene);
+                RegisterPausePanel();
+                _inventory = new global::GamePlay.Inventory.InventoryModel(10);
+                EventCenter.Dispatch(GameEvent.ModelBinded, _inventory);
+                _inventory.PutItem(new global::GamePlay.Core.Item_Tree(), 2);
+                _inventory.PutItem(new global::GamePlay.Core.Item_Water(), 1);
+                return;
+            }
             var uIParent=GameObject.Find("UIParent");
             _gameplayUI=Instantiate(_gamePlayUIPrefab,uIParent.transform);
+            RegisterPausePanel();
+        }
+
+        private void RegisterPausePanel()
+        {
+            var frame = _gameplayUI.GetComponent<UIFrame>();
+            if (frame == null) return;
+            var root = new GameObject("GamePausePanel", typeof(RectTransform));
+            root.transform.SetParent(frame.transform, false);
+            var panel = root.AddComponent<GamePausePanel>();
+            frame.RegisterScreen("GamePausePanel", panel, root.transform);
+            frame.ShowPanel("GamePausePanel");
         }
         
     }

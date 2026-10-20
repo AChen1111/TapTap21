@@ -82,13 +82,17 @@ public class SlotDragger : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndD
         {
             return;
         }
-        if(_ruler.enableAttach)_dragObj.GetComponent<RectTransform>().position=GetAttachVar(eventData.position,_ruler);
+        if(_ruler != null && _ruler.enableAttach)_dragObj.GetComponent<RectTransform>().position=GetAttachVar(eventData.position,_ruler);
         else _dragObj.GetComponent<RectTransform>().position=eventData.position;
     }
 
     GameObject ConstructDragObj(GameObject obj)
     {
-        var ret=Instantiate(obj,transform);
+        Canvas canvas = GetComponentInParent<Canvas>().rootCanvas;
+        var ret=Instantiate(obj, canvas.transform);
+        ret.transform.SetAsLastSibling();
+        var image = ret.GetComponent<UnityEngine.UI.Image>();
+        if (image != null) image.raycastTarget = false;
         ret.SetActive(true);
         return ret;
     }
