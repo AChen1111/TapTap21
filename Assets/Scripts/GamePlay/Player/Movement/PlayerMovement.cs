@@ -21,6 +21,13 @@ namespace GamePlay.Player.Movement
         private bool _wasOnPlatform;
         private bool _leftPlatform;
         private bool _dropRequested;
+        /// <summary>实际收到的移动输入，供动画区分主动行走与被平台搬运。</summary>
+        public Vector2 MoveInput { get; private set; }
+        public float LastJumpTime { get; private set; } = float.NegativeInfinity;
+        public float AnimationMoveSpeed => Mathf.Abs(_rb2d.linearVelocity.x -
+            (_platformCollider != null && _platformCollider.attachedRigidbody != null
+                ? _platformCollider.attachedRigidbody.linearVelocity.x
+                : _preserveCarry ? _carriedPlatformVelocityX : 0f));
         void Awake()
         {
             _playerInput=GetComponent<PlayerInput>();
@@ -51,6 +58,7 @@ namespace GamePlay.Player.Movement
         }
         void OnDisable()
         {
+            MoveInput = Vector2.zero;
             _playerInput.OnInputJump -= Jump;
             _playerInput.OnInputMove -= Move;
         }
@@ -58,6 +66,7 @@ namespace GamePlay.Player.Movement
         void Jump()
         {
             if(_jumpTimes<=0)return;
+            LastJumpTime = Time.time;
             if (TryGetPlatformVelocityX(out float platformX))
             {
                 _carriedPlatformVelocityX = platformX;
@@ -74,6 +83,7 @@ namespace GamePlay.Player.Movement
         }
         void Move(Vector2 moveDir)
         {
+            MoveInput = moveDir;
             TryDropThrough(moveDir);
             bool onPlatform = TryGetPlatformVelocityX(out float platformX);
             float extraX;
