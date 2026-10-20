@@ -1,0 +1,322 @@
+{
+  "report": {
+    "modules": [
+      {
+        "name": "AI",
+        "dependencies": []
+      },
+      {
+        "name": "AMD",
+        "dependencies": []
+      },
+      {
+        "name": "AR",
+        "dependencies": []
+      },
+      {
+        "name": "Accessibility",
+        "dependencies": []
+      },
+      {
+        "name": "AdaptivePerformance",
+        "dependencies": []
+      },
+      {
+        "name": "AndroidJNI",
+        "dependencies": []
+      },
+      {
+        "name": "Animation",
+        "dependencies": []
+      },
+      {
+        "name": "AssetBundle",
+        "dependencies": []
+      },
+      {
+        "name": "Audio",
+        "dependencies": []
+      },
+      {
+        "name": "Cloth",
+        "dependencies": []
+      },
+      {
+        "name": "ClusterInput",
+        "dependencies": []
+      },
+      {
+        "name": "ClusterRenderer",
+        "dependencies": []
+      },
+      {
+        "name": "ContentLoad",
+        "dependencies": []
+      },
+      {
+        "name": "Core",
+        "dependencies": []
+      },
+      {
+        "name": "CrashReporting",
+        "dependencies": []
+      },
+      {
+        "name": "DSPGraph",
+        "dependencies": []
+      },
+      {
+        "name": "Director",
+        "dependencies": []
+      },
+      {
+        "name": "GI",
+        "dependencies": []
+      },
+      {
+        "name": "GameCenter",
+        "dependencies": []
+      },
+      {
+        "name": "Grid",
+        "dependencies": []
+      },
+      {
+        "name": "Hierarchy",
+        "dependencies": []
+      },
+      {
+        "name": "HierarchyCore",
+        "dependencies": []
+      },
+      {
+        "name": "HotReload",
+        "dependencies": []
+      },
+      {
+        "name": "IMGUI",
+        "dependencies": []
+      },
+      {
+        "name": "Identifiers",
+        "dependencies": []
+      },
+      {
+        "name": "ImageConversion",
+        "dependencies": []
+      },
+      {
+        "name": "Input",
+        "dependencies": []
+      },
+      {
+        "name": "InputForUI",
+        "dependencies": []
+      },
+      {
+        "name": "InputLegacy",
+        "dependencies": []
+      },
+      {
+        "name": "Insights",
+        "dependencies": []
+      },
+      {
+        "name": "JSONSerialize",
+        "dependencies": []
+      },
+      {
+        "name": "Localization",
+        "dependencies": []
+      },
+      {
+        "name": "Marshalling",
+        "dependencies": []
+      },
+      {
+        "name": "Multiplayer",
+        "dependencies": []
+      },
+      {
+        "name": "NVIDIA",
+        "dependencies": []
+      },
+      {
+        "name": "ParticleSystem",
+        "dependencies": []
+      },
+      {
+        "name": "PerformanceReporting",
+        "dependencies": []
+      },
+      {
+        "name": "Physics",
+        "dependencies": []
+      },
+      {
+        "name": "Physics2D",
+        "dependencies": []
+      },
+      {
+        "name": "PhysicsBackendPhysX",
+        "dependencies": []
+      },
+      {
+        "name": "Properties",
+        "dependencies": []
+      },
+      {
+        "name": "RenderAs2D",
+        "dependencies": []
+      },
+      {
+        "name": "ScreenCapture",
+        "dependencies": []
+      },
+      {
+        "name": "ShaderRuntime",
+        "dependencies": []
+      },
+      {
+        "name": "ShaderVariantAnalytics",
+        "dependencies": []
+      },
+      {
+        "name": "SharedInternals",
+        "dependencies": []
+      },
+      {
+        "name": "SpriteMask",
+        "dependencies": []
+      },
+      {
+        "name": "SpriteShape",
+        "dependencies": []
+      },
+      {
+        "name": "Streaming",
+        "dependencies": []
+      },
+      {
+        "name": "Substance",
+        "dependencies": []
+      },
+      {
+        "name": "Subsystems",
+        "dependencies": []
+      },
+      {
+        "name": "TLS",
+        "dependencies": []
+      },
+      {
+        "name": "Terrain",
+        "dependencies": []
+      },
+      {
+        "name": "TerrainPhysics",
+        "dependencies": []
+      },
+      {
+        "name": "TextCoreFontEngine",
+        "dependencies": []
+      },
+      {
+        "name": "TextCoreTextEngine",
+        "dependencies": []
+      },
+      {
+        "name": "TextRendering",
+        "dependencies": []
+      },
+      {
+        "name": "Tilemap",
+        "dependencies": []
+      },
+      {
+        "name": "UI",
+        "dependencies": []
+      },
+      {
+        "name": "UIElements",
+        "dependencies": []
+      },
+      {
+        "name": "Umbra",
+        "dependencies": []
+      },
+      {
+        "name": "UnityAnalytics",
+        "dependencies": []
+      },
+      {
+        "name": "UnityAnalyticsCommon",
+        "dependencies": []
+      },
+      {
+        "name": "UnityConnect",
+        "dependencies": []
+      },
+      {
+        "name": "UnityConsent",
+        "dependencies": []
+      },
+      {
+        "name": "UnityCurl",
+        "dependencies": []
+      },
+      {
+        "name": "UnityWebRequest",
+        "dependencies": []
+      },
+      {
+        "name": "UnityWebRequestAssetBundle",
+        "dependencies": []
+      },
+      {
+        "name": "UnityWebRequestAudio",
+        "dependencies": []
+      },
+      {
+        "name": "UnityWebRequestTexture",
+        "dependencies": []
+      },
+      {
+        "name": "UnityWebRequestWWW",
+        "dependencies": []
+      },
+      {
+        "name": "VFX",
+        "dependencies": []
+      },
+      {
+        "name": "VR",
+        "dependencies": []
+      },
+      {
+        "name": "VectorGraphics",
+        "dependencies": []
+      },
+      {
+        "name": "Vehicles",
+        "dependencies": []
+      },
+      {
+        "name": "Video",
+        "dependencies": []
+      },
+      {
+        "name": "VirtualTexturing",
+        "dependencies": []
+      },
+      {
+        "name": "Wind",
+        "dependencies": []
+      },
+      {
+        "name": "XR",
+        "dependencies": []
+      }
+    ]
+  }
+}
