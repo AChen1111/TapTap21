@@ -37,6 +37,7 @@ namespace GamePlay.Player.Anim
 
         public string CurrentState { get; private set; }
         public bool IsGrounded { get; private set; }
+        public bool IsRunning => _hasState && CurrentState == _runState;
 
         void Awake()
         {

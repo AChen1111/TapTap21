@@ -251,6 +251,7 @@ GameObject:
   m_Component:
   - component: {fileID: 735362475}
   - component: {fileID: 735362474}
+  - component: {fileID: 735362476}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -285,6 +286,23 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &735362476
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 735362473}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c4e9a1b6d3f48e2a0b5c8d7e6f14293, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GamePlay.Audio.GameAudio
+  _menuMusic: {fileID: 8300000, guid: 91039caa72c76b64cab8a514271608c6, type: 3}
+  _gameMusic: {fileID: 8300000, guid: da5cbfa081ad1664aa5dfd13e105268c, type: 3}
+  _pullItem: {fileID: 8300000, guid: 4187f1d07d1f02c40b8ecea8750816f7, type: 3}
+  _musicVolume: 0.4
+  _pullVolume: 0.85
 --- !u!1 &1089336776
 GameObject:
   m_ObjectHideFlags: 0
@@ -473,6 +491,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::GameSceneManager
   _playerPrefab: {fileID: 3323557252224284591, guid: efa56e27fc0e67b4d9edf15558c72e33, type: 3}
   _firstMap: Scene_1
+  _fadeDuration: 0.35
 --- !u!4 &1553686744
 Transform:
   m_ObjectHideFlags: 0

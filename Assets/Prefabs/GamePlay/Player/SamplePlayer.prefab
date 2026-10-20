@@ -109,6 +109,7 @@ GameObject:
   - component: {fileID: -5267085526797264760}
   - component: {fileID: 874404804667118566}
   - component: {fileID: 120000000000000001}
+  - component: {fileID: 120000000000000002}
   m_Layer: 0
   m_Name: SamplePlayer
   m_TagString: Untagged
@@ -393,3 +394,24 @@ MonoBehaviour:
   _saveOnChange: 1
   _autoRespawn: 1
   _respawnDelay: 0.5
+--- !u!114 &120000000000000002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8079714827373850578}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a91e6c3b5d704f2e8b1a0c7d4e6f8592, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::GamePlay.Player.Audio.PlayerLocomotionAudio
+  _footsteps:
+  - {fileID: 8300000, guid: 3cf35724a04e2dd4f8cb46669eb2b4d9, type: 3}
+  - {fileID: 8300000, guid: 3614f3020becd1b4198dca78ac84c8d6, type: 3}
+  - {fileID: 8300000, guid: ebf33ea7050a9a04d8eaf8f75c2e5c03, type: 3}
+  _jumps:
+  - {fileID: 8300000, guid: 943733476bab69a4c878dc96ccb414d7, type: 3}
+  - {fileID: 8300000, guid: 0a5feeed609cb7d44a79687ca61bf881, type: 3}
+  _footstepVolume: 0.55
+  _jumpVolume: 0.85
