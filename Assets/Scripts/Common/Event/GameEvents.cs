@@ -1,3 +1,4 @@
+using System;
 using GamePlay.Core;
 using GamePlay.Gravity;
 using GamePlay.Inventory;
@@ -44,5 +45,6 @@ namespace AChen.Events
         public static readonly EventId OnGameStartedBtnClicked=new($"UI.{nameof(OnGameStartedBtnClicked)}");
         /// <summary>当退出游戏按钮被点击</summary>
         public static readonly EventId OnGameExitBtnClicked=new($"UI.{nameof(OnGameExitBtnClicked)}");
+        public static readonly EventId OnGameSceneLoaded=new($"Scene.{nameof(OnGameSceneLoaded)}");
     }
 }

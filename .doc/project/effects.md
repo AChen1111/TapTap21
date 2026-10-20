@@ -137,5 +137,3 @@ void ShowDanger()
 自制：菜单 **Effects / Screen Effect**。
 
 - **Blit**：指定一张全屏材质。播放器把 `intensity` 曲线写进材质的 `_Intensity`。闪白用 `Materials/ScreenFlash.mat`，暗角用 `Materials/ScreenVignette.mat`。
-
-摄像机上还没有 `ScreenEffectPlayer` 时，场景里原来的描边保持原样。加上这个组件之后，描边只在 `Play` 了描边配置时出现。
